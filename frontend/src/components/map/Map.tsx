@@ -22,9 +22,10 @@ function Map() {
       className="klimamap" 
       center={[64, 10]} 
       zoom={5} 
-      maxZoom={9}
+      maxZoom={15}
       minZoom={4}
       scrollWheelZoom={true}
+      preferCanvas={true}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

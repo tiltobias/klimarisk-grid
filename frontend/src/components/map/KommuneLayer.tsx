@@ -7,7 +7,7 @@ import type { Polygon as LeafletPolygon } from 'leaflet';
 import { getDataFileJSON } from '../../hooks/getPublicUrl';
 
 type KommuneProperties = { 
-  kommunenummer: KommuneNr; 
+  ssbid: KommuneNr; 
 };
 type KommuneFeature = Feature<Polygon | MultiPolygon, KommuneProperties>;
 type KommuneGeometryFeature = Feature<Geometry, KommuneProperties>;
@@ -19,7 +19,7 @@ function KommuneLayer() {
   const [komGeoJSON, setKomGeoJSON] = useState<KommuneGeoJSON | null>(null);
 
   useEffect(() => {
-    getDataFileJSON('kommune.geojson').then(geojson => setKomGeoJSON(geojson));
+    getDataFileJSON('rutenett_veg.geojson').then(geojson => setKomGeoJSON(geojson));
   }, []);
 
   const {
@@ -33,7 +33,7 @@ function KommuneLayer() {
   if (!komGeoJSON) return null;
 
   const onEachFeature = (feature: KommuneFeature, layer: LeafletPolygon) => {
-    const komNr = feature.properties.kommunenummer;
+    const komNr = feature.properties.ssbid;
     layer.on({
       mouseover: () => {
         setHighlightedKommune(komNr);
@@ -53,7 +53,7 @@ function KommuneLayer() {
 
   const style = (feature?: KommuneGeometryFeature) => {
 
-    const komNr = feature?.properties.kommunenummer || undefined;
+    const komNr = feature?.properties.ssbid || undefined;
 
     return {
       fillColor: getColor(komNr || null),

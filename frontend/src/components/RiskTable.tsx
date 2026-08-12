@@ -185,7 +185,7 @@ function RiskTable() {
           </tr>
         </thead>
         <tbody>
-          {rowsSorted.map((row, index) => (
+          {rowsSorted.slice(0, 1000).map((row, index) => (
             <tr 
               key={index} 
               className={`${row.komNr === selectedKommune ? 'selected' : ''} ${row.komNr === highlightedKommune ? 'highlighted' : ''}`}

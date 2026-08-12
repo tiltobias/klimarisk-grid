@@ -21,3 +21,7 @@ __pycache__/
 .idea/
 .DS_Store
 Thumbs.db
+
+
+# Too large files
+scripts/rutenett_veg.geojson 

@@ -332,18 +332,19 @@ const useDataStore = create<DataStore>((set, get) => ({
     const kommune = data.years[year].byKommune[komNr]
 
     const tmpRes = sumInvertibleValues(metrics, kommune, elementKey)
-    let min = Infinity
-    let max = -Infinity
-    for (const year of Object.values(data.years)) {
-      for (const kom of Object.values(year.byKommune)) {
-        const calculatedRisk = sumInvertibleValues(metrics, kom, elementKey)
-        if (calculatedRisk < min) min = calculatedRisk;
-        if (calculatedRisk > max) max = calculatedRisk;
-      }
-    }
+    return tmpRes;
+    // let min = Infinity
+    // let max = -Infinity
+    // for (const year of Object.values(data.years)) {
+    //   for (const kom of Object.values(year.byKommune)) {
+    //     const calculatedRisk = sumInvertibleValues(metrics, kom, elementKey)
+    //     if (calculatedRisk < min) min = calculatedRisk;
+    //     if (calculatedRisk > max) max = calculatedRisk;
+    //   }
+    // }
     
-    if (min === max) return null
-    return (tmpRes - min)/(max - min)*100
+    // if (min === max) return null
+    // return (tmpRes - min)/(max - min)*100
   },
 
 
