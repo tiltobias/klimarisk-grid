@@ -2,7 +2,7 @@ import './Header.css';
 import YearSelect from './YearSelect';
 import LayoutSelect from './LayoutSelect';
 import LanguageSelect from './LanguageSelect';
-import ReportButton from './ReportButton';
+// import ReportButton from './ReportButton';
 
 
 interface Props {
@@ -23,7 +23,7 @@ function Header({ noControls }: Props) {
         <div className="headerControls">
           <LayoutSelect />
           <YearSelect />
-          <ReportButton />
+          {/* <ReportButton /> */}
         </div>
       )}
       <LanguageSelect />
