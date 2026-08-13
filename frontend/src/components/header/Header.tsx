@@ -1,7 +1,8 @@
 import './Header.css';
-import YearSelect from './YearSelect';
+// import YearSelect from './YearSelect';
 import LayoutSelect from './LayoutSelect';
 import LanguageSelect from './LanguageSelect';
+import FylkeSelector from './FylkeSelector';
 // import ReportButton from './ReportButton';
 
 
@@ -21,8 +22,9 @@ function Header({ noControls }: Props) {
       </h1>
       {!noControls && (
         <div className="headerControls">
+          <FylkeSelector />
           <LayoutSelect />
-          <YearSelect />
+          {/* <YearSelect /> */}
           {/* <ReportButton /> */}
         </div>
       )}

@@ -85,9 +85,14 @@ def cleanDataModel(dm):
             "description": year["description"],
         } for year in dm["years"]],
 
-        "documentation": [
+        **({"documentation": [
             item for item in dm["documentation"]
-        ],
+        ]} if "documentation" in dm else {}),
+
+        "fylker": [{
+            "nr": fylke["nr"],
+            "name": fylke["name_no"],
+        } for fylke in dm["fylker"]],
     }
 
 

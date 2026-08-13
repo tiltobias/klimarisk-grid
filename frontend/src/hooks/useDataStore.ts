@@ -33,12 +33,18 @@ type RiskInfo = {
   name: Record<Language, string>;
   description?: Record<Language, string>;
 }
+export type FylkeNr = string & { readonly __brand: unique symbol};
+type FylkeInfo = {
+  nr: FylkeNr;
+  name: string;
+}
 
 export type DataModel = { 
   risk: RiskInfo;
   elements: Element[];
   years: YearInfo[];
   documentation?: Record<Language, string>[];
+  fylker: FylkeInfo[];
 };
 
 type KommuneData = {
@@ -139,6 +145,9 @@ interface DataStore {
 
   riskColors: string[];
   getRiskColors: (distKey?: DistributionKey) => string[];
+
+  selectedFylke: FylkeNr | null;
+  setSelectedFylke: (fylke: FylkeNr | null) => void;
 }
 
 const useDataStore = create<DataStore>((set, get) => ({
@@ -479,6 +488,10 @@ const useDataStore = create<DataStore>((set, get) => ({
       return defaultRiskColors; // never
     }
   },
+
+  selectedFylke: null,
+
+  setSelectedFylke: (fylke) => set({ selectedFylke: fylke }),
 
 }));
 
