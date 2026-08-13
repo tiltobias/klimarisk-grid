@@ -16,6 +16,7 @@
     "@fontsource/raleway": "^5.2.8",
     "@fontsource/source-sans-pro": "^5.2.5",
     "@react-pdf/renderer": "^4.5.1",
+    "@tanstack/react-virtual": "^3.14.9",
     "leaflet": "^1.9.4",
     "lucide-react": "^1.16.0",
     "react": "^19.1.0",

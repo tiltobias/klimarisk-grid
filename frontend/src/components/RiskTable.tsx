@@ -4,6 +4,7 @@ import "./RiskTable.css";
 import useLanguageStore, { t } from "../hooks/useLanguageStore";
 import Tooltip from "./Tooltip";
 import { MoveDown as ArrowDown, MoveUp as ArrowUp } from "lucide-react";
+import { useVirtualizer } from "@tanstack/react-virtual";
 
 
 function RiskTable() {
@@ -109,13 +110,35 @@ function RiskTable() {
     }))) || [] : [],
   ]
 
+
+  const tableContainerRef = useRef<HTMLDivElement>(null);
+
+  const rowVirtualizer = useVirtualizer({
+    count: rowsSorted.length,
+    getScrollElement: () => tableContainerRef.current,
+    estimateSize: () => 23,
+    overscan: 20, 
+    useFlushSync: false,
+  });
+
+  const virtualRows = rowVirtualizer.getVirtualItems();
+
+  const paddingTop = virtualRows.length > 0 ? virtualRows[0].start : 0;
+  const paddingBottom = virtualRows.length > 0 ? rowVirtualizer.getTotalSize() - virtualRows[virtualRows.length - 1].end : 0;
+
+
   // Scroll selected row into view when selectedKommune changes
   const selectedRowRef = useRef<HTMLTableRowElement>(null);
   useEffect(() => {
-    if (selectedRowRef.current !== null) {
+    if (selectedRowRef.current !== null) { // If the selected row is already rendered, scroll to it smoothly
       selectedRowRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    } else {// Else use the virtualizer to scroll to the index of the selectedKommune
+      const index = rowsSorted.findIndex(row => row.komNr === selectedKommune); 
+      if (index !== -1) {
+        rowVirtualizer.scrollToIndex(index, { align: "center" });
+      };
     }
-  }, [selectedKommune, rowsSorted]); // Should scroll when table rows change
+  }, [selectedKommune, rowsSorted, rowVirtualizer]); // Should scroll when table rows change
 
   // Scroll selected distribution column into view
   const selectedColRef = useRef<HTMLTableCellElement>(null)
@@ -132,7 +155,7 @@ function RiskTable() {
     )
   }
   return (
-    <div className="riskTableContainer">
+    <div className="riskTableContainer" ref={tableContainerRef}>
       <table>
         <thead>
           <tr>
@@ -185,39 +208,52 @@ function RiskTable() {
           </tr>
         </thead>
         <tbody>
-          {rowsSorted.slice(0, 1000).map((row, index) => (
-            <tr 
-              key={index} 
-              className={`${row.komNr === selectedKommune ? 'selected' : ''} ${row.komNr === highlightedKommune ? 'highlighted' : ''}`}
-              onMouseEnter={() => setHighlightedKommune(row.komNr)}
-              onMouseLeave={() => setHighlightedKommune(null)}
-              ref={row.komNr === selectedKommune ? selectedRowRef : null}
-              onClick={() => setSelectedKommune(row.komNr)}
-            >
-              <td 
-                className="indexCol"
-                style={{ "--risk-color": getRiskColor(row.komNr) } as React.CSSProperties}
-              >
-                {index + 1}
-              </td>
-              <td className="kommuneCol">
-                {row.klimarisk_name}
-              </td>
-              <td
-                className={`${highlightedDistribution && highlightedDistribution.type === "risk" ? "highlightedCol" : ""} ${selectedDistribuion.type === "risk" ? "selectedCol" : ""}`}
-              >
-                {row.totalRisk !== null && row.totalRisk !== undefined ? row.totalRisk.toFixed(0) : ''}
-              </td>
-              {headers.map((header, headerIndex) => (
-                <td 
-                  key={`${index}-${headerIndex}`}
-                  className={`${(highlightedDistribution && highlightedDistribution?.type !== "risk" && highlightedDistribution.key === header.key)  ? "highlightedCol" : ""} ${selectedDistribuion.type !== "risk" && selectedDistribuion.key === header.key ? "selectedCol" : ""}`}
-                >
-                  {row[header.key] !== null && row[header.key] !== undefined ? (row[header.key] as number).toFixed(0) : '-'}
-                </td>
-              ))}
+          {paddingTop > 0 && (
+            <tr style={{ height: `${paddingTop}px` }}>
+              <td colSpan={headers.length + 2} />
             </tr>
-          ))}
+          )}
+          {virtualRows.map(virtualRow => {
+            const row = rowsSorted[virtualRow.index];
+            return (
+              <tr 
+                key={row.komNr} 
+                className={`${row.komNr === selectedKommune ? 'selected' : ''} ${row.komNr === highlightedKommune ? 'highlighted' : ''}`}
+                onMouseEnter={() => setHighlightedKommune(row.komNr)}
+                onMouseLeave={() => setHighlightedKommune(null)}
+                ref={row.komNr === selectedKommune ? selectedRowRef : null}
+                onClick={() => setSelectedKommune(row.komNr)}
+              >
+                <td 
+                  className="indexCol"
+                  style={{ "--risk-color": getRiskColor(row.komNr) } as React.CSSProperties}
+                >
+                  {virtualRow.index + 1}
+                </td>
+                <td className="kommuneCol">
+                  {row.klimarisk_name}
+                </td>
+                <td
+                  className={`${highlightedDistribution && highlightedDistribution.type === "risk" ? "highlightedCol" : ""} ${selectedDistribuion.type === "risk" ? "selectedCol" : ""}`}
+                >
+                  {row.totalRisk !== null && row.totalRisk !== undefined ? row.totalRisk.toFixed(0) : ''}
+                </td>
+                {headers.map((header, headerIndex) => (
+                  <td 
+                    key={`${row.komNr}-${headerIndex}`}
+                    className={`${(highlightedDistribution && highlightedDistribution?.type !== "risk" && highlightedDistribution.key === header.key)  ? "highlightedCol" : ""} ${selectedDistribuion.type !== "risk" && selectedDistribuion.key === header.key ? "selectedCol" : ""}`}
+                  >
+                    {row[header.key] !== null && row[header.key] !== undefined ? (row[header.key] as number).toFixed(0) : '-'}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
+          {paddingBottom > 0 && (
+            <tr style={{ height: `${paddingBottom}px` }}>
+              <td colSpan={headers.length + 2} />
+            </tr>
+          )}
         </tbody>
 
       </table>
