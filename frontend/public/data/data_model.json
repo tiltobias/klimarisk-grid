@@ -11,7 +11,7 @@
   },
   "elements": [
     {
-      "key": "f",
+      "key": "Fare",
       "name": {
         "en": "Hazard",
         "no": "Fare"
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "key": "e",
+      "key": "Eksponering",
       "name": {
         "en": "Exposure",
         "no": "Eksponering"
@@ -103,7 +103,7 @@
       ]
     },
     {
-      "key": "s",
+      "key": "Sarbarhet",
       "name": {
         "en": "Vulnerability",
         "no": "Sårbarhet"
@@ -138,7 +138,7 @@
       ]
     },
     {
-      "key": "r",
+      "key": "Respons",
       "name": {
         "en": "Response",
         "no": "Respons"

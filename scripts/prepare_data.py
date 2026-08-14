@@ -11,8 +11,8 @@ def getFylkeSheet(fylkeNr: str):
     return f"Fylke{fylkeNr}"
 
 
-def getIndicatorColumn(indicator: str, year: str):
-    return f"{indicator}_{year}_0_100"
+def getIndicatorColumn(indicator: str, year: str, normalized: bool = True):
+    return f"{indicator}_{year}{"_0_100" if normalized else ""}"
 
 
 def buildDataObject(excel_file_path: str, dm: dict, fylkeNr: str) -> dict:
@@ -59,6 +59,39 @@ def buildDataObject(excel_file_path: str, dm: dict, fylkeNr: str) -> dict:
 
     return kommune_data
 
+def buildCacheObject(excel_file_path: str, dm: dict, fylkeNr: str) -> dict:
+    cache_data = {
+        "years": {}
+    }
+
+    for year in dm["years"]:
+        df = pd.read_excel(excel_file_path, sheet_name=getFylkeSheet(fylkeNr))
+
+        cache_data_year = {
+            "byKommune": {},
+            "byElement": {},
+            "byTotalRisk": [],
+        }
+        for _, row in df.iterrows():
+            iKomNr = str(row["ssbid"]).zfill(4) # Ensure 4-digit kommune number
+
+            totalRisk = row[getIndicatorColumn(dm["risk"]["key"], year["key"], normalized=False)]
+            cache_data_year_byKommune = {
+                "totalRisk": totalRisk,
+            }
+            cache_data_year["byTotalRisk"].append(totalRisk)
+            for determinant in dm["determinants"]:
+                determinant_value = row[getIndicatorColumn(determinant["key"], year["key"])]
+                cache_data_year_byKommune[determinant["key"]] = determinant_value
+
+                # Add element [] to byElement dictionary if it doesnt exist
+                if determinant["key"] not in cache_data_year["byElement"]:
+                    cache_data_year["byElement"][determinant["key"]] = [determinant_value]
+                else:
+                    cache_data_year["byElement"][determinant["key"]].append(determinant_value)
+            cache_data_year["byKommune"][iKomNr] = cache_data_year_byKommune
+        cache_data["years"][year["key"]] = cache_data_year
+    return cache_data
 
 # Recreate the data model with only useful information for the frontend
 
@@ -145,7 +178,8 @@ if __name__ == "__main__":
     in_path_model = root_folder / "scripts" / "source_data_model.json"
 
     out_folder = root_folder / "frontend" / "public" / "data"
-    out_path_fylke = lambda fylkeNr: out_folder / f"data_fylke{fylkeNr}.json"
+    out_path_data = lambda fylkeNr: out_folder / f"data_fylke{fylkeNr}.json"
+    out_path_cache = lambda fylkeNr: out_folder / f"cache_fylke{fylkeNr}.json"
     out_path_model = out_folder / "data_model.json"
     out_path_geojson = out_folder / "geometry.geojson"
 
@@ -156,8 +190,10 @@ if __name__ == "__main__":
     # Build data object for each fylke
     for fylkeNr in [fylke["nr"] for fylke in dm["fylker"]]:
         print(f"Building data object for fylke {fylkeNr}...")
-        with open(out_path_fylke(fylkeNr), "w", encoding="utf-8") as f:
+        with open(out_path_data(fylkeNr), "w", encoding="utf-8") as f:
             json.dump(buildDataObject(in_path_excel, dm, fylkeNr=fylkeNr), f, ensure_ascii=False, indent=2)
+        with open(out_path_cache(fylkeNr), "w", encoding="utf-8") as f:
+            json.dump(buildCacheObject(in_path_excel, dm, fylkeNr=fylkeNr), f, ensure_ascii=False, indent=2)
 
     # Write cleaned data model
     with open(out_path_model, "w", encoding="utf-8") as f:

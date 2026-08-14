@@ -174,15 +174,19 @@ const useDataStore = create<DataStore>((set, get) => ({
 
   fetchData: async (fylkeNr: FylkeNr) => {
   const data: Data = await getDataFileJSON(`data_fylke${fylkeNr}.json`);
-  set({ data });
+  const cache: Cache = await getDataFileJSON(`cache_fylke${fylkeNr}.json`);
+  set({ data, cache });
   const { dataModel, getDistributionDomain } = get();
   if (!dataModel) return;
   const elements = dataModel.elements.map(element => {
     const metrics = element.metrics.map(metric => {
       const domain = getDistributionDomain({ type: "metric", key: metric.key });
-      return {...metric, disabled: !domain || domain[0] === domain[1]};
+      const disabled = !domain || domain[0] === domain[1];
+      return {...metric, disabled};
     });
-    return {...element, metrics, disabled: metrics.every(metric => metric.disabled)};
+    const domain = getDistributionDomain({ type: "element", key: element.key });
+    const disabled = !domain || domain[0] === domain[1];
+    return {...element, metrics, disabled};
   });
   set({ dataModel: {...dataModel, elements} });
   get().refreshCacheDeep();
@@ -191,160 +195,160 @@ const useDataStore = create<DataStore>((set, get) => ({
   cache: null,
 
   refreshCacheDeep: () => {
-    const { dataModel, data, calculateElementValue } = get();
-    if (!dataModel || !data || !data.years) return;
+    // const { dataModel, data, calculateElementValue } = get();
+    // if (!dataModel || !data || !data.years) return;
 
-    const cache: Cache = {
-      years: {},
-    } as Cache;
+    // const cache: Cache = {
+    //   years: {},
+    // } as Cache;
 
-    for (const year of Object.keys(data.years)) {
-      cache.years[year as Year] = {
-        byKommune: {},
-        byElement: {},
-        byTotalRisk: [],
-      };
-      // Kommuner {}
-      for (const komNr of Object.keys(data.years[year as Year].byKommune)) {
-        const kommuneCache: KommuneCache = { totalRisk: 0 };
+    // for (const year of Object.keys(data.years)) {
+    //   cache.years[year as Year] = {
+    //     byKommune: {},
+    //     byElement: {},
+    //     byTotalRisk: [],
+    //   };
+    //   // Kommuner {}
+    //   for (const komNr of Object.keys(data.years[year as Year].byKommune)) {
+    //     const kommuneCache: KommuneCache = { totalRisk: 0 };
         
-        let totalRisk = 0;
-        for (const element of Object.values(dataModel.elements)) {
-          const elementValue = calculateElementValue(element.key, komNr as KommuneNr, year as Year);
-          if (elementValue !== null) {
-            kommuneCache[element.key] = elementValue;
-            totalRisk += element.disabled ? 0 : (element.invert === true ? 100 - elementValue : elementValue);
-          }
-        }
-        kommuneCache.totalRisk = totalRisk;
+    //     let totalRisk = 0;
+    //     for (const element of Object.values(dataModel.elements)) {
+    //       const elementValue = calculateElementValue(element.key, komNr as KommuneNr, year as Year);
+    //       if (elementValue !== null) {
+    //         kommuneCache[element.key] = elementValue;
+    //         totalRisk += element.disabled ? 0 : (element.invert === true ? 100 - elementValue : elementValue);
+    //       }
+    //     }
+    //     kommuneCache.totalRisk = totalRisk;
 
-        cache.years[year as Year].byKommune[komNr as KommuneNr] = kommuneCache;
-      }
-      // byElement {}
-      for (const element of dataModel.elements) { // Each element
-        cache.years[year as Year].byElement[element.key] = 
-          Object.values(cache.years[year as Year].byKommune)
-          .map(kommune => kommune[element.key])
-          .sort((a, b) => a - b);
-      }
-      cache.years[year as Year].byTotalRisk = // Total risk
-        Object.values(cache.years[year as Year].byKommune)
-        .map(kommune => kommune.totalRisk)
-        .sort((a, b) => a - b);
-    }
-    set({ cache });
+    //     cache.years[year as Year].byKommune[komNr as KommuneNr] = kommuneCache;
+    //   }
+    //   // byElement {}
+    //   for (const element of dataModel.elements) { // Each element
+    //     cache.years[year as Year].byElement[element.key] = 
+    //       Object.values(cache.years[year as Year].byKommune)
+    //       .map(kommune => kommune[element.key])
+    //       .sort((a, b) => a - b);
+    //   }
+    //   cache.years[year as Year].byTotalRisk = // Total risk
+    //     Object.values(cache.years[year as Year].byKommune)
+    //     .map(kommune => kommune.totalRisk)
+    //     .sort((a, b) => a - b);
+    // }
+    // set({ cache });
   },
 
   refreshCacheRisk: () => {
-    const { dataModel, cache } = get();
-    if (!dataModel || !cache) return;
+    // const { dataModel, cache } = get();
+    // if (!dataModel || !cache) return;
 
-    const newYears = Object.fromEntries(
-      Object.entries(cache.years).map(([year, yearCache]) => {
-        const { byKommune, byElement } = yearCache;
+    // const newYears = Object.fromEntries(
+    //   Object.entries(cache.years).map(([year, yearCache]) => {
+    //     const { byKommune, byElement } = yearCache;
 
-        const newByKommune = Object.fromEntries(
-          Object.entries(byKommune).map(([komNr, kommuneCache]) => {
+    //     const newByKommune = Object.fromEntries(
+    //       Object.entries(byKommune).map(([komNr, kommuneCache]) => {
 
-            const totalRisk = dataModel.elements.reduce((acc, element) => {
-              const elementValue = cache.years[year as Year].byKommune[komNr as KommuneNr][element.key];
-              return acc + (element.disabled ? 0 : (element.invert === true ? 100 - elementValue : elementValue));
-            }, 0);
+    //         const totalRisk = dataModel.elements.reduce((acc, element) => {
+    //           const elementValue = cache.years[year as Year].byKommune[komNr as KommuneNr][element.key];
+    //           return acc + (element.disabled ? 0 : (element.invert === true ? 100 - elementValue : elementValue));
+    //         }, 0);
             
-            return [komNr, { ...kommuneCache, totalRisk }];
-          })
-        );
+    //         return [komNr, { ...kommuneCache, totalRisk }];
+    //       })
+    //     );
 
-        const newTotalRiskDistribution = Object.values(newByKommune)
-          .map(k => k.totalRisk)
-          .sort((a, b) => a - b);
+    //     const newTotalRiskDistribution = Object.values(newByKommune)
+    //       .map(k => k.totalRisk)
+    //       .sort((a, b) => a - b);
 
-        return [
-          year,
-          {
-            byKommune: newByKommune,
-            byElement: byElement,
-            byTotalRisk: newTotalRiskDistribution,
-          }
-        ]
-      })
-    );
+    //     return [
+    //       year,
+    //       {
+    //         byKommune: newByKommune,
+    //         byElement: byElement,
+    //         byTotalRisk: newTotalRiskDistribution,
+    //       }
+    //     ]
+    //   })
+    // );
 
-    set({ cache: { ...cache, years: newYears } });
+    // set({ cache: { ...cache, years: newYears } });
   },
 
-  refreshCacheElement: (elementKey) => {
-    const { cache, calculateElementValue, refreshCacheRisk, dataModel } = get();
-    if (!cache || !dataModel) return;
+  refreshCacheElement: () => {
+    // const { cache, calculateElementValue, refreshCacheRisk, dataModel } = get();
+    // if (!cache || !dataModel) return;
 
-    let newYears: Cache["years"];
-    // If all metrics are disabled, fill with 0s
-    if (dataModel.elements.find(e => e.key === elementKey)!.metrics.every(m => m.disabled)) {
-      newYears = Object.fromEntries(
-        Object.entries(cache.years).map(([year, yearCache]) => {
-          const newByKommune = Object.fromEntries(
-            Object.entries(yearCache.byKommune).map(([komNr, kommuneCache]) => [
-              komNr,
-              {
-                ...kommuneCache,
-                [elementKey]: 0,
-              }
-            ])
-          );
-          const newByElement = {
-            ...yearCache.byElement,
-            [elementKey]: Array(Object.keys(newByKommune).length).fill(0),
-          };
-          return [
-            year,
-            {
-              byKommune: newByKommune,
-              byElement: newByElement,
-              byTotalRisk: yearCache.byTotalRisk,
-            }
-          ];
-        })
-      ) as Cache["years"]
-    } else { // If some metrics are enabled, recalculate element
-      newYears = Object.fromEntries(
-        Object.entries(cache.years).map(([year, yearCache]) => {
-          const { byKommune, byElement, byTotalRisk } = yearCache;
+    // let newYears: Cache["years"];
+    // // If all metrics are disabled, fill with 0s
+    // if (dataModel.elements.find(e => e.key === elementKey)!.metrics.every(m => m.disabled)) {
+    //   newYears = Object.fromEntries(
+    //     Object.entries(cache.years).map(([year, yearCache]) => {
+    //       const newByKommune = Object.fromEntries(
+    //         Object.entries(yearCache.byKommune).map(([komNr, kommuneCache]) => [
+    //           komNr,
+    //           {
+    //             ...kommuneCache,
+    //             [elementKey]: 0,
+    //           }
+    //         ])
+    //       );
+    //       const newByElement = {
+    //         ...yearCache.byElement,
+    //         [elementKey]: Array(Object.keys(newByKommune).length).fill(0),
+    //       };
+    //       return [
+    //         year,
+    //         {
+    //           byKommune: newByKommune,
+    //           byElement: newByElement,
+    //           byTotalRisk: yearCache.byTotalRisk,
+    //         }
+    //       ];
+    //     })
+    //   ) as Cache["years"]
+    // } else { // If some metrics are enabled, recalculate element
+    //   newYears = Object.fromEntries(
+    //     Object.entries(cache.years).map(([year, yearCache]) => {
+    //       const { byKommune, byElement, byTotalRisk } = yearCache;
 
-          const newByKommune = Object.fromEntries(
-            Object.entries(byKommune).map(([komNr, kommuneCache]) => {
-              const elementValue = calculateElementValue(elementKey, komNr as KommuneNr, year as Year);
-              if (elementValue === null) return [komNr, kommuneCache]; // No change if element value is null (e.g. all metrics disabled)
-              return [
-                komNr,
-                { ...kommuneCache, [elementKey]: elementValue }
-              ];
-            })
-          )
+    //       const newByKommune = Object.fromEntries(
+    //         Object.entries(byKommune).map(([komNr, kommuneCache]) => {
+    //           const elementValue = calculateElementValue(elementKey, komNr as KommuneNr, year as Year);
+    //           if (elementValue === null) return [komNr, kommuneCache]; // No change if element value is null (e.g. all metrics disabled)
+    //           return [
+    //             komNr,
+    //             { ...kommuneCache, [elementKey]: elementValue }
+    //           ];
+    //         })
+    //       )
           
-          // rebuild distribution for this element
-          const newElementDistribution = Object.values(newByKommune)
-            .map(k => k[elementKey])
-            .sort((a, b) => a - b);
+    //       // rebuild distribution for this element
+    //       const newElementDistribution = Object.values(newByKommune)
+    //         .map(k => k[elementKey])
+    //         .sort((a, b) => a - b);
 
-          const newByElement = {
-            ...byElement,
-            [elementKey]: newElementDistribution,
-          }
+    //       const newByElement = {
+    //         ...byElement,
+    //         [elementKey]: newElementDistribution,
+    //       }
           
-          return [
-            year,
-            {
-              byKommune: newByKommune,
-              byElement: newByElement,
-              byTotalRisk: byTotalRisk, // Total risk distribution will be updated in refreshCacheRisk
-            }
-          ]
-        })
-      );
-    }
+    //       return [
+    //         year,
+    //         {
+    //           byKommune: newByKommune,
+    //           byElement: newByElement,
+    //           byTotalRisk: byTotalRisk, // Total risk distribution will be updated in refreshCacheRisk
+    //         }
+    //       ]
+    //     })
+    //   );
+    // }
 
-    set({ cache: { ...cache, years: newYears } });
-    refreshCacheRisk(); // Update total risk after element value change
+    // set({ cache: { ...cache, years: newYears } });
+    // refreshCacheRisk(); // Update total risk after element value change
   },
 
   calculateElementValue: (elementKey, komNr, year) => {

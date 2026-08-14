@@ -5,10 +5,10 @@
         "22560006649000": {
           "klimarisk_name": 22560006649000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 5.890889735149881,
           "fPrec": 26.81353456015001,
@@ -33,10 +33,10 @@
         "22560006650000": {
           "klimarisk_name": 22560006650000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 12.59402042246079,
           "fPrec": 28.80172257870561,
@@ -61,10 +61,10 @@
         "22560006651000": {
           "klimarisk_name": 22560006651000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 33.24211457399717,
           "fPrec": 44.3309968312749,
@@ -89,10 +89,10 @@
         "22560006654000": {
           "klimarisk_name": 22560006654000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 44.96405130272443,
           "fPrec": 100.0,
@@ -117,10 +117,10 @@
         "22570006649000": {
           "klimarisk_name": 22570006649000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 3.539684465544436,
           "fPrec": 24.39548591768694,
@@ -145,10 +145,10 @@
         "22570006650000": {
           "klimarisk_name": 22570006650000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 8.293444695365611,
           "fPrec": 26.49112756203565,
@@ -173,10 +173,10 @@
         "22570006651000": {
           "klimarisk_name": 22570006651000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 15.20177845269919,
           "fPrec": 42.39657021616712,
@@ -201,10 +201,10 @@
         "22580006650000": {
           "klimarisk_name": 22580006650000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 2.915503927546839,
           "fPrec": 21.54756127773807,
@@ -229,10 +229,10 @@
         "22580006651000": {
           "klimarisk_name": 22580006651000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 9.105646509042947,
           "fPrec": 40.67706622622389,
@@ -257,10 +257,10 @@
         "22580006652000": {
           "klimarisk_name": 22580006652000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 30.48903535379232,
           "fPrec": 62.43956550270487,
@@ -285,10 +285,10 @@
         "22590006649000": {
           "klimarisk_name": 22590006649000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 8.259237660614552,
           "fPrec": 10.80065365380377,
@@ -313,10 +313,10 @@
         "22590006650000": {
           "klimarisk_name": 22590006650000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 9.285213872244162,
           "fPrec": 13.91725463557586,
@@ -341,10 +341,10 @@
         "22590006652000": {
           "klimarisk_name": 22590006652000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 28.26608689526151,
           "fPrec": 55.23911948445013,
@@ -369,10 +369,10 @@
         "22600006649000": {
           "klimarisk_name": 22600006649000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 12.86763756198557,
           "fPrec": 2.471794672332548,
@@ -397,10 +397,10 @@
         "22600006652000": {
           "klimarisk_name": 22600006652000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 26.06016367713882,
           "fPrec": 45.72810150989294,
@@ -425,10 +425,10 @@
         "22600006653000": {
           "klimarisk_name": 22600006653000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 38.816687083909,
           "fPrec": 71.78936076123196,
@@ -453,10 +453,10 @@
         "22610006648000": {
           "klimarisk_name": 22610006648000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 8.227535488820092,
           "fPrec": 6.198757461277992,
@@ -481,10 +481,10 @@
         "22610006649000": {
           "klimarisk_name": 22610006649000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 8.900482577503983,
           "fPrec": 1.450835334909176,
@@ -509,10 +509,10 @@
         "22610006653000": {
           "klimarisk_name": 22610006653000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 25.58138260607507,
           "fPrec": 63.78290877787508,
@@ -537,10 +537,10 @@
         "22620006646000": {
           "klimarisk_name": 22620006646000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 19.08008907918889,
           "fPrec": 15.40982154888341,
@@ -565,10 +565,10 @@
         "22620006647000": {
           "klimarisk_name": 22620006647000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 10.48132507250404,
           "fPrec": 9.354407332028474,
@@ -593,10 +593,10 @@
         "22620006648000": {
           "klimarisk_name": 22620006648000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 1.008872694254079,
           "fPrec": 2.901670669818353,
@@ -621,10 +621,10 @@
         "22620006649000": {
           "klimarisk_name": 22620006649000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 1.094390281131729,
           "fPrec": 0.0,
@@ -649,10 +649,10 @@
         "22620006653000": {
           "klimarisk_name": 22620006653000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 33.11385776292255,
           "fPrec": 57.81839084294329,
@@ -677,10 +677,10 @@
         "22630006639000": {
           "klimarisk_name": 22630006639000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 16.59542158017714,
           "fPrec": 51.74638084827254,
@@ -705,10 +705,10 @@
         "22630006640000": {
           "klimarisk_name": 22630006640000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 0.0,
           "fPrec": 51.53144284952964,
@@ -733,10 +733,10 @@
         "22630006641000": {
           "klimarisk_name": 22630006641000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 25.2428347220972,
           "fPrec": 55.11963603360756,
@@ -761,10 +761,10 @@
         "22630006642000": {
           "klimarisk_name": 22630006642000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 29.92309287953566,
           "fPrec": 50.31339423781372,
@@ -789,10 +789,10 @@
         "22630006643000": {
           "klimarisk_name": 22630006643000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 32.57351185700364,
           "fPrec": 42.01283032727351,
@@ -817,10 +817,10 @@
         "22630006644000": {
           "klimarisk_name": 22630006644000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 32.98951480021761,
           "fPrec": 36.40113601519771,
@@ -845,10 +845,10 @@
         "22630006645000": {
           "klimarisk_name": 22630006645000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 4.377561124526914,
           "fPrec": 21.54756127773807,
@@ -873,10 +873,10 @@
         "22630006646000": {
           "klimarisk_name": 22630006646000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 41.45008082096883,
           "fPrec": 14.72327597425633,
@@ -901,10 +901,10 @@
         "22630006648000": {
           "klimarisk_name": 22630006648000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 2.667522494843505,
           "fPrec": 9.403548975185739,
@@ -929,10 +929,10 @@
         "22630006649000": {
           "klimarisk_name": 22630006649000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 2.539304822252576,
           "fPrec": 7.415368643419305,
@@ -957,10 +957,10 @@
         "22630006653000": {
           "klimarisk_name": 22630006653000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 25.16244427658383,
           "fPrec": 59.69910217533827,
@@ -985,10 +985,10 @@
         "22640006643000": {
           "klimarisk_name": 22640006643000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 30.00168295479896,
           "fPrec": 44.33101220485324,
@@ -1013,10 +1013,10 @@
         "22640006648000": {
           "klimarisk_name": 22640006648000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 12.72227723353542,
           "fPrec": 21.54756127773807,
@@ -1041,10 +1041,10 @@
         "22640006649000": {
           "klimarisk_name": 22640006649000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 18.7842021424406,
           "fPrec": 18.48469095225712,
@@ -1069,10 +1069,10 @@
         "22640006651000": {
           "klimarisk_name": 22640006651000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 34.91794616892953,
           "fPrec": 33.31542823909574,
@@ -1097,10 +1097,10 @@
         "22640006652000": {
           "klimarisk_name": 22640006652000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 45.27191461548396,
           "fPrec": 48.41483418096838,
@@ -1125,10 +1125,10 @@
         "22640006653000": {
           "klimarisk_name": 22640006653000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 52.34267308015953,
           "fPrec": 58.51692012188481,
@@ -1153,10 +1153,10 @@
         "22650006639000": {
           "klimarisk_name": 22650006639000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 43.82696093587942,
           "fPrec": 65.60987408040059,
@@ -1181,10 +1181,10 @@
         "22650006645000": {
           "klimarisk_name": 22650006645000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 56.24998532306862,
           "fPrec": 40.62332019635442,
@@ -1209,10 +1209,10 @@
         "22650006646000": {
           "klimarisk_name": 22650006646000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 47.10156045134499,
           "fPrec": 37.07685090388569,
@@ -1237,10 +1237,10 @@
         "22650006647000": {
           "klimarisk_name": 22650006647000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 41.78350156358243,
           "fPrec": 33.96024223532444,
@@ -1265,10 +1265,10 @@
         "22650006649000": {
           "klimarisk_name": 22650006649000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 30.43772480166573,
           "fPrec": 28.04943958310545,
@@ -1293,10 +1293,10 @@
         "22650006650000": {
           "klimarisk_name": 22650006650000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 32.49824855285456,
           "fPrec": 30.78990291047204,
@@ -1321,10 +1321,10 @@
         "22650006651000": {
           "klimarisk_name": 22650006651000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 39.47499637969026,
           "fPrec": 40.83827356867566,
@@ -1349,10 +1349,10 @@
         "22650006652000": {
           "klimarisk_name": 22650006652000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 59.37069232063812,
           "fPrec": 48.41483418096838,
@@ -1377,10 +1377,10 @@
         "22660006638000": {
           "klimarisk_name": 22660006638000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 43.45929402003107,
           "fPrec": 70.33854079990111,
@@ -1405,10 +1405,10 @@
         "22660006639000": {
           "klimarisk_name": 22660006639000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 50.7352555547293,
           "fPrec": 66.4696260753722,
@@ -1433,10 +1433,10 @@
         "22660006640000": {
           "klimarisk_name": 22660006640000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 39.69730296708845,
           "fPrec": 67.54433144266505,
@@ -1461,10 +1461,10 @@
         "22660006641000": {
           "klimarisk_name": 22660006641000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 49.97432515469485,
           "fPrec": 59.59162548917766,
@@ -1489,10 +1489,10 @@
         "22660006642000": {
           "klimarisk_name": 22660006642000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 52.60775803023839,
           "fPrec": 56.79741613194158,
@@ -1517,10 +1517,10 @@
         "22660006643000": {
           "klimarisk_name": 22660006643000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 30.21545735275124,
           "fPrec": 54.433113519348,
@@ -1545,10 +1545,10 @@
         "22660006644000": {
           "klimarisk_name": 22660006644000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 38.24381709803799,
           "fPrec": 48.3610881510989,
@@ -1573,10 +1573,10 @@
         "22660006645000": {
           "klimarisk_name": 22660006645000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 40.41549414292592,
           "fPrec": 46.80279150360745,
@@ -1601,10 +1601,10 @@
         "22660006647000": {
           "klimarisk_name": 22660006647000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 47.09298912341538,
           "fPrec": 40.3009055114509,
@@ -1629,10 +1629,10 @@
         "22660006648000": {
           "klimarisk_name": 22660006648000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 44.322806385835,
           "fPrec": 40.24719022873809,
@@ -1657,10 +1657,10 @@
         "22660006649000": {
           "klimarisk_name": 22660006649000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 37.1751016622114,
           "fPrec": 36.86189753156445,
@@ -1685,10 +1685,10 @@
         "22660006650000": {
           "klimarisk_name": 22660006650000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 38.08992458014192,
           "fPrec": 38.79635489382892,
@@ -1713,10 +1713,10 @@
         "22660006651000": {
           "klimarisk_name": 22660006651000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 48.4096859919453,
           "fPrec": 46.26545419353936,
@@ -1741,10 +1741,10 @@
         "22660006652000": {
           "klimarisk_name": 22660006652000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 59.49894913171274,
           "fPrec": 47.98495818348258,
@@ -1769,10 +1769,10 @@
         "22670006638000": {
           "klimarisk_name": 22670006638000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 46.46027639597187,
           "fPrec": 73.88501009236984,
@@ -1797,10 +1797,10 @@
         "22670006639000": {
           "klimarisk_name": 22670006639000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 39.4407893449392,
           "fPrec": 70.55346342506567,
@@ -1825,10 +1825,10 @@
         "22670006650000": {
           "klimarisk_name": 22670006650000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 30.7027706132609,
           "fPrec": 40.19344419886861,
@@ -1853,10 +1853,10 @@
         "22670006651000": {
           "klimarisk_name": 22670006651000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 34.40491892463102,
           "fPrec": 41.32186484887427,
@@ -1881,10 +1881,10 @@
         "22670006652000": {
           "klimarisk_name": 22670006652000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 62.3717529735463,
           "fPrec": 45.29822551240713,
@@ -1909,10 +1909,10 @@
         "22680006650000": {
           "klimarisk_name": 22680006650000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 35.76435501735792,
           "fPrec": 41.32188022245261,
@@ -1937,10 +1937,10 @@
         "22680006651000": {
           "klimarisk_name": 22680006651000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 45.08377592435313,
           "fPrec": 43.09511486868696,
@@ -1965,10 +1965,10 @@
         "22680006652000": {
           "klimarisk_name": 22680006652000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 47.72570185085889,
           "fPrec": 49.75819282971694,
@@ -1993,10 +1993,10 @@
         "22680006653000": {
           "klimarisk_name": 22680006653000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 68.04033612129798,
           "fPrec": 53.14347015331224,
@@ -2021,10 +2021,10 @@
         "22690006638000": {
           "klimarisk_name": 22690006638000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 48.2386899566737,
           "fPrec": 86.62009804807057,
@@ -2049,10 +2049,10 @@
         "22690006650000": {
           "klimarisk_name": 22690006650000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 74.90593065443458,
           "fPrec": 47.71628952844853,
@@ -2077,10 +2077,10 @@
         "22690006651000": {
           "klimarisk_name": 22690006651000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 45.71648865179665,
           "fPrec": 51.04783619575269,
@@ -2105,10 +2105,10 @@
         "22690006652000": {
           "klimarisk_name": 22690006652000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 46.63988289765678,
           "fPrec": 52.49867153066187,
@@ -2133,10 +2133,10 @@
         "22690006653000": {
           "klimarisk_name": 22690006653000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 56.1816103920502,
           "fPrec": 55.72272613822707,
@@ -2161,10 +2161,10 @@
         "22690006654000": {
           "klimarisk_name": 22690006654000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 82.60086965710775,
           "fPrec": 61.90221281905844,
@@ -2189,10 +2189,10 @@
         "22700006651000": {
           "klimarisk_name": 22700006651000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 62.73084856146504,
           "fPrec": 55.29285014074127,
@@ -2217,10 +2217,10 @@
         "22700006652000": {
           "klimarisk_name": 22700006652000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 55.40349819767283,
           "fPrec": 58.08705949797734,
@@ -2245,10 +2245,10 @@
         "22700006653000": {
           "klimarisk_name": 22700006653000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 50.78656610685589,
           "fPrec": 60.29017014169751,
@@ -2273,10 +2273,10 @@
         "22700006654000": {
           "klimarisk_name": 22700006654000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 87.89329283804886,
           "fPrec": 62.60075747157829,
@@ -2301,10 +2301,10 @@
         "22710006651000": {
           "klimarisk_name": 22710006651000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 77.23153935570228,
           "fPrec": 63.03064884264244,
@@ -2329,10 +2329,10 @@
         "22710006653000": {
           "klimarisk_name": 22710006653000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 50.41036700156163,
           "fPrec": 61.09619148037797,
@@ -2357,10 +2357,10 @@
         "22710006654000": {
           "klimarisk_name": 22710006654000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 64.20997013733694,
           "fPrec": 60.61258482660102,
@@ -2385,10 +2385,10 @@
         "22710006655000": {
           "klimarisk_name": 22710006655000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 100.0,
           "fPrec": 65.50241276781831,
@@ -2413,10 +2413,10 @@
         "22720006651000": {
           "klimarisk_name": 22720006651000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 62.67953800933844,
           "fPrec": 61.4723214479943,
@@ -2441,10 +2441,10 @@
         "22720006652000": {
           "klimarisk_name": 22720006652000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 70.31463427043909,
           "fPrec": 60.82752282534393,
@@ -2469,10 +2469,10 @@
         "22720006653000": {
           "klimarisk_name": 22720006653000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 67.3649233081412,
           "fPrec": 59.69910217533827,
@@ -2497,10 +2497,10 @@
         "22720006655000": {
           "klimarisk_name": 22720006655000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 64.34679827634118,
           "fPrec": 61.74100547660668,
@@ -2525,10 +2525,10 @@
         "22720006656000": {
           "klimarisk_name": 22720006656000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 97.77701240298549,
           "fPrec": 65.12628280020198,
@@ -2553,10 +2553,10 @@
         "22730006652000": {
           "klimarisk_name": 22730006652000,
           "klimarisk_indicator_number": {
-            "f": 3,
-            "e": 3,
-            "s": 2,
-            "r": 11
+            "Fare": 3,
+            "Eksponering": 3,
+            "Sarbarhet": 2,
+            "Respons": 11
           },
           "fZero": 68.160021604443,
           "fPrec": 59.32294146056527,
