@@ -6,22 +6,27 @@ function FylkeSelector() {
 
 
   return (
+    <label htmlFor="fylkeSelector"><span style={{ paddingRight: '0.5rem' }}>Fylke:</span>
     <select
+      id="fylkeSelector"
       className="fylkeSelector"
       value={selectedFylke || ''}
       onChange={(e) => {
         const fylkeNr = e.target.value || null;
-        setSelectedFylke(fylkeNr as FylkeNr | null);
+        if (fylkeNr && dataModel?.fylker.some((fylke) => fylke.nr === fylkeNr)) {
+          setSelectedFylke(fylkeNr as FylkeNr);
+        }
       }}
     >
-      <option value="">Velg fylke</option>
-      {dataModel?.fylker.map((fylke) => (
+      <option value=""></option>
+      {[...(dataModel?.fylker || [])].sort((a, b) => a.name.localeCompare(b.name, "nb")).map((fylke) => (
         <option key={fylke.nr} value={fylke.nr}>
           {fylke.name}
         </option>
       ))}
 
     </select>
+    </label>
   )
 
 }

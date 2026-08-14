@@ -7,13 +7,18 @@ import Dashboard from './pages/Dashboard';
 function App() {
 
   const {
+    fetchDataModel,
     fetchData,
+    selectedFylke,
   } = useDataStore();
 
   // Fetch data on mount, only once
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    fetchDataModel();
+    if (selectedFylke) {
+      fetchData(selectedFylke);
+    }
+  }, [fetchData, fetchDataModel, selectedFylke]);
 
 
   return (

@@ -145,7 +145,7 @@ if __name__ == "__main__":
     in_path_model = root_folder / "scripts" / "source_data_model.json"
 
     out_folder = root_folder / "frontend" / "public" / "data"
-    out_path = out_folder / "data.json"
+    out_path_fylke = lambda fylkeNr: out_folder / f"data_fylke{fylkeNr}.json"
     out_path_model = out_folder / "data_model.json"
     out_path_geojson = out_folder / "geometry.geojson"
 
@@ -153,9 +153,11 @@ if __name__ == "__main__":
     dm = json.load(open(in_path_model, "r", encoding="utf-8"))
     geojson = json.load(open(in_path_geojson, "r", encoding="utf-8"))
 
-    # Build data object
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(buildDataObject(in_path_excel, dm, fylkeNr="11"), f, ensure_ascii=False, indent=2)
+    # Build data object for each fylke
+    for fylkeNr in [fylke["nr"] for fylke in dm["fylker"]]:
+        print(f"Building data object for fylke {fylkeNr}...")
+        with open(out_path_fylke(fylkeNr), "w", encoding="utf-8") as f:
+            json.dump(buildDataObject(in_path_excel, dm, fylkeNr=fylkeNr), f, ensure_ascii=False, indent=2)
 
     # Write cleaned data model
     with open(out_path_model, "w", encoding="utf-8") as f:

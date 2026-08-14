@@ -108,7 +108,8 @@ import { defaultRiskColors } from '../assets/colors';
 interface DataStore {
   dataModel: DataModel | null;
   data: Data | null;
-  fetchData: () => Promise<void>;
+  fetchDataModel: () => Promise<void>;
+  fetchData: (fylkeNr: FylkeNr) => Promise<void>;
 
   cache: Cache | null;
   refreshCacheDeep: () => void;
@@ -156,8 +157,7 @@ const useDataStore = create<DataStore>((set, get) => ({
   
   data: null,
   
-  fetchData: async () => {
-    const data: Data = await getDataFileJSON('data.json');
+  fetchDataModel: async () => {
     const dataModel: DataModel = await getDataFileJSON('data_model.json');
 
     // Enable all elements and metrics by default (.json file might miss disabled property)
@@ -169,8 +169,12 @@ const useDataStore = create<DataStore>((set, get) => ({
     });
 
     const selectedYear = get().selectedYear ?? dataModel.years[dataModel.years.length - 1].key; // TODO: Make default year property in kommune_data_model.json?
-    set({ dataModel, data, selectedYear });
+    set({ dataModel, selectedYear });
+  },
 
+  fetchData: async (fylkeNr: FylkeNr) => {
+    const data: Data = await getDataFileJSON(`data_fylke${fylkeNr}.json`);
+    set({ data });
     get().refreshCacheDeep();
   },
 
