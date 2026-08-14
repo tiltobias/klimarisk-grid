@@ -173,10 +173,20 @@ const useDataStore = create<DataStore>((set, get) => ({
   },
 
   fetchData: async (fylkeNr: FylkeNr) => {
-    const data: Data = await getDataFileJSON(`data_fylke${fylkeNr}.json`);
-    set({ data });
-    get().refreshCacheDeep();
-  },
+  const data: Data = await getDataFileJSON(`data_fylke${fylkeNr}.json`);
+  set({ data });
+  const { dataModel, getDistributionDomain } = get();
+  if (!dataModel) return;
+  const elements = dataModel.elements.map(element => {
+    const metrics = element.metrics.map(metric => {
+      const domain = getDistributionDomain({ type: "metric", key: metric.key });
+      return {...metric, disabled: !domain || domain[0] === domain[1]};
+    });
+    return {...element, metrics, disabled: metrics.every(metric => metric.disabled)};
+  });
+  set({ dataModel: {...dataModel, elements} });
+  get().refreshCacheDeep();
+},
 
   cache: null,
 

@@ -47,6 +47,7 @@ function RiskTree() {
                 }} 
                 id={`risktree-${element.key}`}
                 className="treeBox"
+                disabled
               />
               <div className="treeName">
                 <Tooltip text={l(element.description)}>
@@ -75,6 +76,7 @@ function RiskTree() {
                       }}
                       id={`risktree-${element.key}-${metric.key}`}
                       className="treeBox"
+                      disabled
                     />
                     <div className="treeName">
                       <Tooltip text={l(metric.description)}>

@@ -5,7 +5,7 @@
 }
 
 .treeHandle {
-  cursor: pointer;
+  /* cursor: pointer; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -50,10 +50,10 @@
   --detail-padding: .4em;
 }
 
-.riskTree .highlighted,
+/* .riskTree .highlighted,
 .treeHandle:hover {
   background-color: var(--c-highlighted);
-}
+} */
 
 .riskTree .disabled {
   background-color: var(--c-bg1);

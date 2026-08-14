@@ -15,6 +15,9 @@ function App() {
   // Fetch data on mount, only once
   useEffect(() => {
     fetchDataModel();
+  }, [fetchDataModel]);
+
+  useEffect(() => {
     if (selectedFylke) {
       fetchData(selectedFylke);
     }
