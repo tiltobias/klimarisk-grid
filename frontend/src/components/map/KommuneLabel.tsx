@@ -8,18 +8,15 @@ interface Props {
 function KommuneLabel({ mouseOnMap }: Props) {
   const {
     highlightedKommune,
-    data,
-    selectedYear,
-    // selectedKommune,
   } = useDataStore();
 
   return (
     <>
       {mouseOnMap ? (
         <>
-          {highlightedKommune && data && selectedYear && (
+          {highlightedKommune && (
             <div className="kommuneLabel">
-              {data.years[selectedYear].byKommune[highlightedKommune].klimarisk_name}
+              {highlightedKommune}
             </div>
           )}
         </>

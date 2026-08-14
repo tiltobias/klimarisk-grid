@@ -157,8 +157,8 @@ const useDataStore = create<DataStore>((set, get) => ({
   data: null,
   
   fetchData: async () => {
-    const data: Data = await getDataFileJSON('kommune_data.json');
-    const dataModel: DataModel = await getDataFileJSON('kommune_data_model.json');
+    const data: Data = await getDataFileJSON('data.json');
+    const dataModel: DataModel = await getDataFileJSON('data_model.json');
 
     // Enable all elements and metrics by default (.json file might miss disabled property)
     dataModel.elements.forEach(element => {
@@ -363,10 +363,10 @@ const useDataStore = create<DataStore>((set, get) => ({
     const colors = distKey ? getRiskColors(dist) : riskColors;
     if (!data || !cache || !selectedYear || colors.length === 0 || !cache.years[selectedYear]) return 'gray';
     const risk = dist.type === "risk" 
-      ? cache.years[selectedYear].byKommune[komNr].totalRisk
+      ? cache.years[selectedYear].byKommune[komNr]?.["totalRisk"]
       : dist.type === "element"
-        ? cache.years[selectedYear].byKommune[komNr][dist.key]
-        : data.years[selectedYear].byKommune[komNr][dist.key];
+        ? cache.years[selectedYear].byKommune[komNr]?.[dist.key]
+        : data.years[selectedYear].byKommune[komNr]?.[dist.key];
     const [minRisk, maxRisk] = getDistributionDomain(dist) ?? [0, 0];
     if (minRisk === maxRisk || risk === undefined) return 'gray'; // Avoid division by zero and invalid risk values
     const colorIndex = Math.floor((risk - minRisk) / (maxRisk - minRisk) * colors.length);

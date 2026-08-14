@@ -16,7 +16,7 @@ function FylkeSelector() {
     >
       <option value="">Velg fylke</option>
       {dataModel?.fylker.map((fylke) => (
-        <option key={fylke.nr} value={fylke.nr} selected={selectedFylke === fylke.nr}>
+        <option key={fylke.nr} value={fylke.nr}>
           {fylke.name}
         </option>
       ))}

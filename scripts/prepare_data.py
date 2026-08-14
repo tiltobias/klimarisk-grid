@@ -1,46 +1,49 @@
+import pandas as pd
 import json
 from pathlib import Path
+import geopandas as gpd
 
 
 COORDINATE_PRECISION = 6
 
 
-def getYearSheet(year: str):
-    return f"KomRang_{year}"
+def getFylkeSheet(fylkeNr: str):
+    return f"Fylke{fylkeNr}"
 
 
 def getIndicatorColumn(indicator: str, year: str):
-    return f"{indicator}"
-    # return f"{indicator}_{year}_0_100"
+    return f"{indicator}_{year}_0_100"
 
 
-def buildDataObject(data: dict, dm: dict) -> dict:
+def buildDataObject(excel_file_path: str, dm: dict, fylkeNr: str) -> dict:
     kommune_data = {
         "years": {}
     }
 
     for year in dm["years"]:
+        df = pd.read_excel(excel_file_path, sheet_name=getFylkeSheet(fylkeNr))
+
         kommune_data_year = {
             "byKommune": {},
             "byMetric": {},
         }
-
-        for feature in data["features"]:
-            row = feature["properties"]
-            iKomNr = str(row["ssbid"])
+        for _, row in df.iterrows():
+            iKomNr = str(row["ssbid"]).zfill(4) # Ensure 4-digit kommune number
 
             kommune_data_year_byKommune = {
                 "klimarisk_name": row["ssbid"],
                 "klimarisk_indicator_number": {},
             }
-
             for determinant in dm["determinants"]:
                 for indicator in determinant["indicators"]:
                     indicator_value = row[getIndicatorColumn(indicator["key"], year["key"])]
+                    if pd.isna(indicator_value):
+                        continue
 
                     kommune_data_year_byKommune["klimarisk_indicator_number"][determinant["key"]] = kommune_data_year_byKommune["klimarisk_indicator_number"].get(determinant["key"], 0) + 1
                     kommune_data_year_byKommune[indicator["key"]] = indicator_value
 
+                    # Add metric [] to byMetric dictionary if it doesnt exist
                     if indicator["key"] not in kommune_data_year["byMetric"]:
                         kommune_data_year["byMetric"][indicator["key"]] = [indicator_value]
                     else:
@@ -48,6 +51,7 @@ def buildDataObject(data: dict, dm: dict) -> dict:
 
             kommune_data_year["byKommune"][iKomNr] = kommune_data_year_byKommune
 
+        # sort byMetric {} metrics
         for metric in kommune_data_year["byMetric"]:
             kommune_data_year["byMetric"][metric].sort()
 
@@ -62,7 +66,7 @@ def cleanDataModel(dm):
     return {
         "risk": {
             "name": dm["risk"]["name"],
-            "description": dm["risk"]["description"],
+            **({"description": dm["risk"]["description"]} if "description" in dm["risk"] else {}),
         },
 
         "elements": [{
@@ -82,7 +86,7 @@ def cleanDataModel(dm):
         "years": [{
             "key": year["key"],
             "name": year["name"],
-            "description": year["description"],
+            **({"description": year["description"]} if "description" in year else {}),
         } for year in dm["years"]],
 
         **({"documentation": [
@@ -107,39 +111,51 @@ def roundCoordinates(coordinates, precision=COORDINATE_PRECISION):
 
 
 def cleanGeoJson(data: dict) -> dict:
+    features = data["features"]
+
+    if data.get("crs"):
+        crs = data["crs"]["properties"]["name"]
+
+        gdf = gpd.GeoDataFrame.from_features(features, crs=crs)
+        gdf = gdf.to_crs(epsg=4326)
+
+        features = json.loads(gdf.to_json())["features"]
+
     return {
         "type": "FeatureCollection",
         "features": [{
             "type": "Feature",
             "properties": {
                 "ssbid": feature["properties"]["ssbid"],
+                "txtKomNr": feature["properties"]["txtKomNr"],
             },
             "geometry": {
                 **feature["geometry"],
                 "coordinates": roundCoordinates(feature["geometry"]["coordinates"]),
             },
-        } for feature in data["features"]],
+        } for feature in features],
     }
 
 
 if __name__ == "__main__":
     root_folder = Path(__file__).resolve().parent.parent
 
-    in_path_geojson = root_folder / "scripts" / "rutenett_veg.geojson"
-    in_path_model = root_folder / "scripts" / "rutenett_data_model.json"
+    in_path_excel = root_folder / "scripts" / "source_data.xlsx"
+    in_path_geojson = root_folder / "scripts" / "source_geometry.geojson"
+    in_path_model = root_folder / "scripts" / "source_data_model.json"
 
     out_folder = root_folder / "frontend" / "public" / "data"
-    out_path = out_folder / "kommune_data.json"
-    out_path_model = out_folder / "kommune_data_model.json"
-    out_path_geojson = out_folder / "rutenett_veg.geojson"
+    out_path = out_folder / "data.json"
+    out_path_model = out_folder / "data_model.json"
+    out_path_geojson = out_folder / "geometry.geojson"
 
     # Load source files
     dm = json.load(open(in_path_model, "r", encoding="utf-8"))
-    data = json.load(open(in_path_geojson, "r", encoding="utf-8"))
+    geojson = json.load(open(in_path_geojson, "r", encoding="utf-8"))
 
     # Build data object
     with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(buildDataObject(data, dm), f, ensure_ascii=False, indent=2)
+        json.dump(buildDataObject(in_path_excel, dm, fylkeNr="11"), f, ensure_ascii=False, indent=2)
 
     # Write cleaned data model
     with open(out_path_model, "w", encoding="utf-8") as f:
@@ -147,4 +163,4 @@ if __name__ == "__main__":
 
     # Write cleaned GeoJSON
     with open(out_path_geojson, "w", encoding="utf-8") as f:
-        json.dump(cleanGeoJson(data), f, ensure_ascii=False, separators=(",", ":"))
+        json.dump(cleanGeoJson(geojson), f, ensure_ascii=False, separators=(",", ":"))

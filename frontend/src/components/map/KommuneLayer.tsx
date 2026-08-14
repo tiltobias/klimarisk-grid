@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
-import { GeoJSON } from 'react-leaflet';
+import { useState, useEffect, useMemo } from 'react';
+import { GeoJSON, useMap } from 'react-leaflet';
 import useDataStore, { type KommuneNr } from '../../hooks/useDataStore';
 
 import type { FeatureCollection, Feature, Polygon, MultiPolygon, Geometry } from 'geojson';
-import type { Polygon as LeafletPolygon } from 'leaflet';
+import { type Polygon as LeafletPolygon, geoJSON as leafletGeoJSON } from 'leaflet';
 import { getDataFileJSON } from '../../hooks/getPublicUrl';
 
 type KommuneProperties = { 
   ssbid: KommuneNr; 
+  txtKomNr: KommuneNr;
 };
 type KommuneFeature = Feature<Polygon | MultiPolygon, KommuneProperties>;
 type KommuneGeometryFeature = Feature<Geometry, KommuneProperties>;
@@ -19,8 +20,8 @@ function KommuneLayer() {
   const [komGeoJSON, setKomGeoJSON] = useState<KommuneGeoJSON | null>(null);
 
   useEffect(() => {
-    getDataFileJSON('rutenett_veg.geojson').then(geojson => setKomGeoJSON(geojson));
-  }, []);
+    getDataFileJSON('geometry.geojson').then(geojson => setKomGeoJSON(geojson));
+  }, []);  
 
   const {
     highlightedKommune,
@@ -28,9 +29,29 @@ function KommuneLayer() {
     selectedKommune,
     setSelectedKommune,
     getRiskColor,
+    selectedFylke,
   } = useDataStore();
 
-  if (!komGeoJSON) return null;
+  const fylkeGeometry = useMemo(() => {
+    if (!komGeoJSON || !selectedFylke) return null;
+    return {
+      type: "FeatureCollection",
+      features: komGeoJSON.features.filter((f) => f.properties.txtKomNr.slice(0, 2) === selectedFylke)
+    } as KommuneGeoJSON;
+  }, [selectedFylke, komGeoJSON]);
+
+  const map = useMap();
+
+  useEffect(() => {
+    if (!fylkeGeometry) return;
+    const bounds = leafletGeoJSON(fylkeGeometry).getBounds();
+    if (!bounds.isValid()) return;
+    map.fitBounds(bounds, {
+      padding: [20, 20],
+    });
+  }, [fylkeGeometry, map]);
+
+  if (!fylkeGeometry) return null;
 
   const onEachFeature = (feature: KommuneFeature, layer: LeafletPolygon) => {
     const komNr = feature.properties.ssbid;
@@ -65,7 +86,7 @@ function KommuneLayer() {
     };
   }
 
-  return <GeoJSON data={komGeoJSON} onEachFeature={onEachFeature} style={style} />;
+  return <GeoJSON key={selectedFylke} data={fylkeGeometry} onEachFeature={onEachFeature} style={style} />
 }
 
 export default KommuneLayer;

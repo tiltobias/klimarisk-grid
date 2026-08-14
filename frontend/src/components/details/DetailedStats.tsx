@@ -46,7 +46,7 @@ function DetailedStats() {
   const yearCache = cache && selectedYear ? cache.years[selectedYear] : null
 
   const ranks = useMemo(() => {
-    if (!yearData || !yearCache || !dataModel || !selectedKommune || !selectedYear) return null;
+    if (!yearData || !yearCache || !dataModel || !selectedKommune || !selectedYear || !yearCache.byKommune[selectedKommune] || !yearData.byKommune[selectedKommune]) return null;
     const tmp: RankRisk = {
       name: dataModel.risk.name,
       description: dataModel.risk.description,

@@ -9,7 +9,7 @@ function FlyToSelectedKommune() {
   const [komGeoJSON, setKomGeoJSON] = useState<KommuneGeoJSON | null>(null);
   
   useEffect(() => {
-    getDataFileJSON('rutenett_veg.geojson').then(geojson => setKomGeoJSON(geojson));
+    getDataFileJSON('geometry.geojson').then(geojson => setKomGeoJSON(geojson));
   }, []);
 
   const map = useMap();
