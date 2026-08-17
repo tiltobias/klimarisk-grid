@@ -1,43 +1,71 @@
-# Klimarisk dashboard
+# Klimarisk Grid Dashboard
 
-This repository contains the source code for a web-based dashboard developed as part of a [master thesis in Geomatics at NTNU](https://www.ntnu.edu/studies/courses/TBA4925/2025). The dashboard is used to explore municipal climate risk data for Norway, based on [climate risk data from the Noradapt climate service](https://klimamonitor.no/analysar/kommunerangering-2024).
+This repository contains the source code for a web-based climate risk dashboard for exploring **1 km × 1 km grid cells along major roads in Norway**.
 
-The dashboard is designed to make municipal climate risk data easier to inspect, compare, and understand through linked views such as maps, tables, charts, rankings, and indicator-level controls.
+The application is an extension of the [Klimarisk dashboard](https://github.com/tiltobias/klimarisk), which was originally developed for exploring municipality-level climate risk. `klimarisk-grid` adapts the same general dashboard concept and linked-view interface to a much finer geographic resolution.
 
-For the specific repository version described in the master thesis, see the [thesis-submission Git tag](https://github.com/tiltobias/klimarisk/tree/thesis-submission).
+Instead of comparing municipalities across Norway, the grid dashboard works with one selected county (*fylke*) at a time. Users can explore climate risk across the road grid cells within the county and select an individual grid cell for more detailed analysis. Maps, tables, distributions, rankings, and indicator information are coordinated around the selected county and grid cell.
+
+The dashboard uses a separate climate risk dataset for grid cells along Norwegian roads. This dataset is not yet publicly published.
+
+## Relation to the Klimarisk dashboard
+
+`klimarisk-grid` is based on and extends the original [`klimarisk`](https://github.com/tiltobias/klimarisk) application, but is maintained as a separate repository.
+
+The main difference is the geographic unit being analysed:
+
+* `klimarisk` analyses Norwegian **municipalities**.
+* `klimarisk-grid` analyses **1 km × 1 km grid cells along major roads**, within a selected county.
+
+The grid version also adapts the comparison levels accordingly. Instead of national and county-level municipality comparisons, selected grid cells are compared with other grid cells in their **county** and **municipality**.
+
+Although the applications share parts of their design and implementation, they use different datasets and preprocessing workflows. `klimarisk-grid` does not use the separate `klimarisk-data` repository.
 
 ## Online application
 
 The dashboard is hosted by GitHub Pages and is available online at:
 
-[tiltobias.github.io/klimarisk](https://tiltobias.github.io/klimarisk/)
+[tiltobias.github.io/klimarisk-grid](https://tiltobias.github.io/klimarisk-grid/)
 
-This online deployment reflects the current deployed version of the application. To run the project locally, download or clone this repository and follow the guide in [Running locally](#running-locally).
+The application supports optional URL parameters that can be useful when linking to or embedding the dashboard.
 
-## Related data repository
+### Embedded mode
 
-The processed dashboard data is stored in a separate repository:
+Add `?embed` to use the version intended for embedding in Klimamonitor.no, including its corresponding color scheme:
 
-[github.com/tiltobias/klimarisk-data](https://github.com/tiltobias/klimarisk-data)
+```text
+https://tiltobias.github.io/klimarisk-grid/?embed
+```
 
-The relation between the two repositories is:
+### Preselecting a county
 
-- `klimarisk` contains the dashboard source code and the preprocessing script.
-- `klimarisk-data` contains processed data files used by the deployed dashboard, such as JSON and GeoJSON files.
+The `f` parameter can be used to select a county by county number:
 
-This separation makes it clear that data maintainers can update the dashboard data without needing to update the main dashboard frontend code.
+```text
+https://tiltobias.github.io/klimarisk-grid/?f=46
+```
+
+The county parameter is also synchronized with the application state, so it will normally appear in the URL after a county has been selected.
+
+The parameters can be combined:
+
+```text
+https://tiltobias.github.io/klimarisk-grid/?embed&f=46
+```
+
+Both parameters are optional.
 
 ## Repository structure
 
 ```text
-klimarisk/
+klimarisk-grid/
 ├── frontend/   # React, TypeScript, and Vite dashboard application
 └── scripts/    # Python preprocessing script and source data
 ```
 
 ## Running locally
 
-Running the project locally is useful for development, testing, or inspecting a specific checked-out version of the dashboard.
+Running the project locally is useful for development, testing, or inspecting a specific version of the dashboard.
 
 You need to have Node.js installed on your computer. Installing Node.js also installs `npm`, which is used to install and run the frontend application.
 
@@ -57,30 +85,11 @@ http://localhost:5173/
 
 Open this address in a web browser to view the dashboard.
 
-### Local data when running the dashboard locally
-
-When running the dashboard locally, the frontend should normally use the local data files that belong to the checked-out version of the repository. This helps ensure that the application is run with the same data structure as the code version being inspected.
-
-The data URL logic is defined in:
-
-```text
-frontend/src/hooks/getPublicUrl.ts
-```
-
-In the `getDataUrl` function, the local data URL should be active when running the dashboard locally:
-
-```ts
-export const getDataUrl = (fileName: string) => {
-  return getPublicUrl(`data/${fileName}`); // For local development, place data files in public/data/
-  // return `https://tiltobias.github.io/klimarisk-data/${fileName}`; // For production, fetch from GitHub Pages
-}
-```
-
-For older commits, it may be necessary to check or change this function so that the frontend uses the corresponding local data files instead of newer files from the external data repository. If the production URL is active, simply swap the commented line so that the local `getPublicUrl` line is active and the external GitHub Pages URL is commented out.
+All data used by the application is included locally with the project. The dashboard does not fetch its dataset from an external data repository.
 
 ## Running the Python preprocessing script
 
-Running the preprocessing script is only necessary when the source climate risk workbook or data model has been changed and the processed dashboard data should be regenerated.
+Running the preprocessing script is only necessary when the source climate risk data, geographic data, or data model has changed and the processed dashboard data should be regenerated.
 
 You need to have Python installed on your computer.
 
@@ -116,5 +125,4 @@ Run the preprocessing script:
 python scripts/prepare_data.py
 ```
 
-The script prepares the data files used by the dashboard frontend.
-
+The preprocessing script prepares the files used by the dashboard frontend. It processes the source Excel data into multiple JSON data files, cleans the GeoJSON geometry data, and prepares the data model used by the application.
