@@ -94,6 +94,7 @@ tr.highlighted .kommuneCol {
   left: 2.7em;
   background-color: var(--c-bg1);
   z-index: 9;
+  padding-right: .5em;
 }
 .kommuneCol::after { /* Shadow of frozen columns */
   content: "";
