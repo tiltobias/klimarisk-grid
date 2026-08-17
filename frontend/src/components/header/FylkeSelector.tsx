@@ -1,12 +1,14 @@
 import useDataStore, { type FylkeNr } from '../../hooks/useDataStore';
+import useLanguageStore, { t } from '../../hooks/useLanguageStore';
 
 
 function FylkeSelector() {
   const { dataModel, selectedFylke, setSelectedFylke } = useDataStore();
+  const { l } = useLanguageStore();
 
 
   return (
-    <label htmlFor="fylkeSelector"><span style={{ paddingRight: '0.5rem' }}>Fylke:</span>
+    <label htmlFor="fylkeSelector"><span className="label" style={{ paddingRight: '0.5rem' }}>{l(t.header.selectedCounty)}:</span>
     <select
       id="fylkeSelector"
       className="fylkeSelector"
