@@ -22,7 +22,7 @@ function ReportPage() {
     cache,
     dataModel,
     getRiskColor,
-    getFylkeDistribution,
+    getKommuneDistribution,
   } = useDataStore();
   const { 
     l,
@@ -48,7 +48,7 @@ function ReportPage() {
           color: getRiskColor(selectedKommune, { type: "metric", key: m.key }),
           value: kommuneData[m.key],
           rank: getDescendingRank(yearData.byMetric[m.key], yearData.byKommune[selectedKommune][m.key], !!m.invert !== !!e.invert),
-          rankFylke: getDescendingRank(getFylkeDistribution(selectedKommune, { type: "metric", key: m.key }, selectedYear)!, yearData.byKommune[selectedKommune][m.key], !!m.invert !== !!e.invert)
+          rankFylke: getDescendingRank(getKommuneDistribution(selectedKommune, { type: "metric", key: m.key }, selectedYear)!, yearData.byKommune[selectedKommune][m.key], !!m.invert !== !!e.invert)
 
         })).sort((a, b) => {
           const aVal = a.value === undefined ? -Infinity : !!a.invert !== !!e.invert ? 100 - kommuneData[a.key] : kommuneData[a.key];
@@ -59,7 +59,7 @@ function ReportPage() {
         color: getRiskColor(selectedKommune, { type: "element", key: e.key }),
         value: kommuneCache[e.key],
         rank: getDescendingRank(yearCache.byElement[e.key], yearCache.byKommune[selectedKommune][e.key], e.invert),
-        rankFylke: getDescendingRank(getFylkeDistribution(selectedKommune, { type: "element", key: e.key }, selectedYear)!, yearCache.byKommune[selectedKommune][e.key], e.invert),
+        rankFylke: getDescendingRank(getKommuneDistribution(selectedKommune, { type: "element", key: e.key }, selectedYear)!, yearCache.byKommune[selectedKommune][e.key], e.invert),
 
       })).sort((a, b) => {
         const aVal = a.invert ? 100 - kommuneCache[a.key] : kommuneCache[a.key];
@@ -73,13 +73,13 @@ function ReportPage() {
         color: getRiskColor(selectedKommune, { type: "risk" }),
         value: kommuneCache.totalRisk,
         rank: getDescendingRank(yearCache.byTotalRisk, yearCache.byKommune[selectedKommune].totalRisk),
-        rankFylke: getDescendingRank(getFylkeDistribution(selectedKommune, { type: "risk" }, selectedYear)!, yearCache.byKommune[selectedKommune].totalRisk),
+        rankFylke: getDescendingRank(getKommuneDistribution(selectedKommune, { type: "risk" }, selectedYear)!, yearCache.byKommune[selectedKommune].totalRisk),
       },
       kommune: {
         key: selectedKommune,
         name: kommuneData.klimarisk_name,
         numKommuneNorge: Object.keys(yearData.byKommune).length,
-        numKommuneFylke: getFylkeDistribution(selectedKommune, { type: "risk" }, selectedYear)!.length,
+        numKommuneFylke: getKommuneDistribution(selectedKommune, { type: "risk" }, selectedYear)!.length,
       },
       year: dataModel.years.find(year => year.key === selectedYear)!,
 
@@ -94,7 +94,7 @@ function ReportPage() {
       l: (entry) => entry ? entry[language] : undefined,
       t,
     };
-  }, [selectedKommune, selectedYear, data, cache, dataModel, language, getRiskColor, getFylkeDistribution]);
+  }, [selectedKommune, selectedYear, data, cache, dataModel, language, getRiskColor, getKommuneDistribution]);
 
 
   return (

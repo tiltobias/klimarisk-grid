@@ -20,12 +20,12 @@ const text = {
         no: "Analysemodus",
       }
     },
-    // year: {
-    //   label: {
-    //     en: "Selected time",
-    //     no: "Valgt tidspunkt",
-    //   },
-    // },
+    year: {
+      label: {
+        en: "Selected time",
+        no: "Valgt tidspunkt",
+      },
+    },
     selectedCounty: {
       en: "Selected county",
       no: "Valgt fylke",
@@ -138,113 +138,113 @@ const text = {
         no: "Nummeret viser den valgte rutens rangering blant alle rutene i kommunen den ligger i. Rangering nummer 1 betyr at den valgte ruten har den høyeste risikoverdien, og at ingen andre ruter i kommunen har en høyere verdi.",
       },
     },
-    // generateReport: {
-    //   en: "Generate Report",
-    //   no: "Generer rapport",
-    // },
+    generateReport: {
+      en: "Generate Report",
+      no: "Generer rapport",
+    },
   },
-  // report: {
-  //   title: {
-  //     en: "Municipality climate risk report",
-  //     no: "Kommunal klimarisikorapport",
-  //   },
-  //   viewer: {
-  //     generating: {
-  //       en: "Generating report...",
-  //       no: "Genererer rapport...",
-  //     },
-  //     error: {
-  //       en: "Could not generate report.",
-  //       no: "Kunne ikke generere rapport.",
-  //     },
-  //   },
-  //   selectMunicipality: {
-  //     en: "Select municipality",
-  //     no: "Velg kommune",
-  //   },
-  //   selectMunicipalityDescription: {
-  //     en: "Select the municipality you want to generate a report for.",
-  //     no: "Velg kommunen du ønsker å generere en rapport for.",
-  //   },
-  //   selectYear: {
-  //     en: "Select time period",
-  //     no: "Velg tidsperiode",
-  //   },
-  //   selectYearDescription: {
-  //     en: "Select the time period you want to generate a report for.",
-  //     no: "Velg tidsperioden du ønsker å generere en rapport for.",
-  //   },
-  //   download: {
-  //     download: {
-  //       en: "Download report",
-  //       no: "Last ned rapport",
-  //     },
-  //     generating: {
-  //       en: "Generating report",
-  //       no: "Genererer rapport",
-  //     },
-  //     fileName: {
-  //       en: "municipality-climate-risk-report.pdf",
-  //       no: "kommunal-klimarisikorapport.pdf",
-  //     },
-  //   },
-    // document: {
-    //   urlLabel: {
-    //     en: "Detailed description:",
-    //     no: "Detaljert forklaring:",
-    //   },
-    //   score: {
-    //     en: "Score:",
-    //     no: "Skår:",
-    //   },
-    //   ranked: {
-    //     p1: {
-    //       en: "Ranked",
-    //       no: "Rangert som nr.",
-    //     },
-    //     p2: {
-    //       en: "out of",
-    //       no: "av",
-    //     },
-    //     p3: {
-    //       en: "municipalities in",
-    //       no: "kommuner i",
-    //     },
-    //     norge: {
-    //       en: "Norway",
-    //       no: "Norge",
-    //     },
-    //     fylke: {
-    //       en: "its county",
-    //       no: "fylket",
-    //     },
-    //     p4: {
-    //       en: "(1 = highest climate risk)",
-    //       no: "(1 = høyest klimarisiko)",
-    //     },
-    //   },
-    //   titlePage: {
-    //     chosenKommune: {
-    //       en: "Selected municipality:",
-    //       no: "Valgt kommune:",
-    //     },
-    //     chosenYear: {
-    //       en: "Selected time period:",
-    //       no: "Valgt tidsperiode:",
-    //     },
-    //   },
-    //   undefinedIndicator: {
-    //     en: "The municipality has not received a score for this indicator.",
-    //     no: "Kommunen har ikke fått en skår for denne indikatoren.",
-    //   },
-    //   documentationPage: {
-    //     title: {
-    //       en: "Documentation",
-    //       no: "Dokumentasjon",
-    //     },
-    //   },
-    // },
-  // },
+  report: {
+    title: {
+      en: "Municipality climate risk report",
+      no: "Kommunal klimarisikorapport",
+    },
+    viewer: {
+      generating: {
+        en: "Generating report...",
+        no: "Genererer rapport...",
+      },
+      error: {
+        en: "Could not generate report.",
+        no: "Kunne ikke generere rapport.",
+      },
+    },
+    selectMunicipality: {
+      en: "Select municipality",
+      no: "Velg kommune",
+    },
+    selectMunicipalityDescription: {
+      en: "Select the municipality you want to generate a report for.",
+      no: "Velg kommunen du ønsker å generere en rapport for.",
+    },
+    selectYear: {
+      en: "Select time period",
+      no: "Velg tidsperiode",
+    },
+    selectYearDescription: {
+      en: "Select the time period you want to generate a report for.",
+      no: "Velg tidsperioden du ønsker å generere en rapport for.",
+    },
+    download: {
+      download: {
+        en: "Download report",
+        no: "Last ned rapport",
+      },
+      generating: {
+        en: "Generating report",
+        no: "Genererer rapport",
+      },
+      fileName: {
+        en: "municipality-climate-risk-report.pdf",
+        no: "kommunal-klimarisikorapport.pdf",
+      },
+    },
+    document: {
+      urlLabel: {
+        en: "Detailed description:",
+        no: "Detaljert forklaring:",
+      },
+      score: {
+        en: "Score:",
+        no: "Skår:",
+      },
+      ranked: {
+        p1: {
+          en: "Ranked",
+          no: "Rangert som nr.",
+        },
+        p2: {
+          en: "out of",
+          no: "av",
+        },
+        p3: {
+          en: "municipalities in",
+          no: "kommuner i",
+        },
+        norge: {
+          en: "Norway",
+          no: "Norge",
+        },
+        fylke: {
+          en: "its county",
+          no: "fylket",
+        },
+        p4: {
+          en: "(1 = highest climate risk)",
+          no: "(1 = høyest klimarisiko)",
+        },
+      },
+      titlePage: {
+        chosenKommune: {
+          en: "Selected municipality:",
+          no: "Valgt kommune:",
+        },
+        chosenYear: {
+          en: "Selected time period:",
+          no: "Valgt tidsperiode:",
+        },
+      },
+      undefinedIndicator: {
+        en: "The municipality has not received a score for this indicator.",
+        no: "Kommunen har ikke fått en skår for denne indikatoren.",
+      },
+      documentationPage: {
+        title: {
+          en: "Documentation",
+          no: "Dokumentasjon",
+        },
+      },
+    },
+  },
 } as const;
 
 export default text;
