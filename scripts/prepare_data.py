@@ -90,7 +90,13 @@ def buildCacheObject(excel_file_path: str, dm: dict, fylkeNr: str) -> dict:
                 else:
                     cache_data_year["byElement"][determinant["key"]].append(determinant_value)
             cache_data_year["byKommune"][iKomNr] = cache_data_year_byKommune
+
+        # sort byElement {} elements
+        for element in cache_data_year["byElement"]:
+            cache_data_year["byElement"][element].sort()
+
         cache_data["years"][year["key"]] = cache_data_year
+        
     return cache_data
 
 # Recreate the data model with only useful information for the frontend

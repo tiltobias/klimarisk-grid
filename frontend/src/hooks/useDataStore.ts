@@ -95,13 +95,13 @@ export type DistributionKey =
   | { type: "element"; key: ElementKey}
   | { type: "metric"; key: MetricKey}
 
-const sumInvertibleValues = (metrics: Metric[], kommune: KommuneData, elementKey: ElementKey): number => {
-  return metrics.reduce(
-    (acc, metric) => 
-      acc + (metric.disabled || kommune[metric.key] === undefined ? 0 : (metric.invert === true ? 100-kommune[metric.key] : kommune[metric.key])), 
-    0
-  ) / kommune.klimarisk_indicator_number[elementKey]; // Normalize by number of indicators to avoid bias towards elements with more metrics
-}
+// const sumInvertibleValues = (metrics: Metric[], kommune: KommuneData, elementKey: ElementKey): number => {
+//   return metrics.reduce(
+//     (acc, metric) => 
+//       acc + (metric.disabled || kommune[metric.key] === undefined ? 0 : (metric.invert === true ? 100-kommune[metric.key] : kommune[metric.key])), 
+//     0
+//   ) / kommune.klimarisk_indicator_number[elementKey]; // Normalize by number of indicators to avoid bias towards elements with more metrics
+// }
 
 import { defaultRiskColors } from '../assets/colors';
 
@@ -115,7 +115,7 @@ interface DataStore {
   refreshCacheDeep: () => void;
   refreshCacheRisk: () => void;
   refreshCacheElement: (elementKey: ElementKey) => void;
-  calculateElementValue: (elementKey: ElementKey, komNr: KommuneNr, year: Year) => number | null; // takes index of the element (hazard, vulnr, expo or resp) in the elements list
+  // calculateElementValue: (elementKey: ElementKey, komNr: KommuneNr, year: Year) => number | null; // takes index of the element (hazard, vulnr, expo or resp) in the elements list
 
   getRiskColor: (komNr: KommuneNr, distKey?: DistributionKey) => string;
 
@@ -351,15 +351,15 @@ const useDataStore = create<DataStore>((set, get) => ({
     // refreshCacheRisk(); // Update total risk after element value change
   },
 
-  calculateElementValue: (elementKey, komNr, year) => {
-    const { dataModel, data } = get()
-    if (!dataModel || !data || !komNr || !year ) return null
+  // calculateElementValue: (elementKey, komNr, year) => {
+  //   const { dataModel, data } = get()
+  //   if (!dataModel || !data || !komNr || !year ) return null
 
-    const metrics = dataModel.elements.find(el => el.key === elementKey)!.metrics
-    const kommune = data.years[year].byKommune[komNr]
+  //   const metrics = dataModel.elements.find(el => el.key === elementKey)!.metrics
+  //   const kommune = data.years[year].byKommune[komNr]
 
-    const tmpRes = sumInvertibleValues(metrics, kommune, elementKey)
-    return tmpRes;
+  //   const tmpRes = sumInvertibleValues(metrics, kommune, elementKey)
+  //   return tmpRes;
     // let min = Infinity
     // let max = -Infinity
     // for (const year of Object.values(data.years)) {
@@ -372,7 +372,7 @@ const useDataStore = create<DataStore>((set, get) => ({
     
     // if (min === max) return null
     // return (tmpRes - min)/(max - min)*100
-  },
+  // },
 
 
   getRiskColor: (komNr, distKey?) => {
