@@ -173,24 +173,24 @@ const useDataStore = create<DataStore>((set, get) => ({
   },
 
   fetchData: async (fylkeNr: FylkeNr) => {
-  const data: Data = await getDataFileJSON(`data_fylke${fylkeNr}.json`);
-  const cache: Cache = await getDataFileJSON(`cache_fylke${fylkeNr}.json`);
-  set({ data, cache });
-  const { dataModel, getDistributionDomain } = get();
-  if (!dataModel) return;
-  const elements = dataModel.elements.map(element => {
-    const metrics = element.metrics.map(metric => {
-      const domain = getDistributionDomain({ type: "metric", key: metric.key });
+    const data: Data = await getDataFileJSON(`data_fylke${fylkeNr}.json`);
+    const cache: Cache = await getDataFileJSON(`cache_fylke${fylkeNr}.json`);
+    set({ data, cache });
+    const { dataModel, getDistributionDomain } = get();
+    if (!dataModel) return;
+    const elements = dataModel.elements.map(element => {
+      const metrics = element.metrics.map(metric => {
+        const domain = getDistributionDomain({ type: "metric", key: metric.key });
+        const disabled = !domain || domain[0] === domain[1];
+        return {...metric, disabled};
+      });
+      const domain = getDistributionDomain({ type: "element", key: element.key });
       const disabled = !domain || domain[0] === domain[1];
-      return {...metric, disabled};
+      return {...element, metrics, disabled};
     });
-    const domain = getDistributionDomain({ type: "element", key: element.key });
-    const disabled = !domain || domain[0] === domain[1];
-    return {...element, metrics, disabled};
-  });
-  set({ dataModel: {...dataModel, elements} });
-  get().refreshCacheDeep();
-},
+    set({ dataModel: {...dataModel, elements} });
+    get().refreshCacheDeep();
+  },
 
   cache: null,
 
