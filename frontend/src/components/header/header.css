@@ -123,3 +123,26 @@ header h1 a {
   background: rgba(0, 0, 0, 0.3);
   color: var(--c-text);
 }
+
+
+
+
+.fylkeOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgb(0 0 0 / 0.6);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.fylkeSelectorActive {
+  z-index: 10001;
+  border-radius: 4px;
+  box-shadow: 0 0 3px 4px var(--c-bg2), 0 4px 20px rgb(0 0 0 / 0.25);
+  background-color: var(--c-bg2);
+  padding-inline: 1em;
+  margin-inline: -1em;
+}
