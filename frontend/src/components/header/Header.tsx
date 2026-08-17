@@ -16,8 +16,8 @@ function Header({ noControls }: Props) {
   return (
     <header>
       <h1>
-        <a href="https://github.com/tiltobias/klimarisk" target="_blank" rel="noopener noreferrer">
-          Klimarisk
+        <a href="https://github.com/tiltobias/klimarisk-grid" target="_blank" rel="noopener noreferrer">
+          Klimarisk Grid
         </a>
       </h1>
       {!noControls && (
