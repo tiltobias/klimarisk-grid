@@ -1,5 +1,5 @@
 import { AreaChart, Area, XAxis, Tooltip, ReferenceLine, ResponsiveContainer, Line } from "recharts";
-import useDataStore, { type DistributionKey, type KommuneNr } from "../../hooks/useDataStore";
+import useDataStore, { type DistributionKey } from "../../hooks/useDataStore";
 import { useMemo, useState } from "react";
 import DistributionSelect from "./DistributionSelect";
 import "./DistributionChart.css";
@@ -88,6 +88,7 @@ function DistributionChart({ distributionKey, bins = 25 }: Props) {
     highlightedKommune, 
     getDistributionDomain, 
     riskColors,
+    getKommuneDistribution,
   } = useDataStore();
   const { l } = useLanguageStore();
 
@@ -103,30 +104,14 @@ function DistributionChart({ distributionKey, bins = 25 }: Props) {
           ? yearCache.byElement[distributionKey.key]
           : yearData.byMetric[distributionKey.key];
 
-  const fylkeDistribution = useMemo(() => {
-    if (!distribution || !yearData || !yearCache) return []
-    const byKommune = 
-      distributionKey.type === "risk"
-        ? yearCache?.byKommune
-        : distributionKey.type === "element"
-          ? yearCache?.byKommune
-          : yearData?.byKommune;
-    const fylkeValues = byKommune && selectedKommune ? Object.keys(byKommune).filter(k => k.slice(0, 2) === selectedKommune.slice(0,2)).map(k => {
-      const kommuneData = yearData.byKommune[k as KommuneNr];
-      const kommuneCache = yearCache.byKommune[k as KommuneNr];
-      return distributionKey.type === "risk"
-        ? kommuneCache.totalRisk
-        : distributionKey.type === "element"
-          ? kommuneCache[distributionKey.key]
-          : kommuneData[distributionKey.key];
-    }) : [];
-    return fylkeValues.sort((a, b) => a - b)
-  }, [distribution, selectedKommune, yearData, yearCache, distributionKey]);
+  const kommuneDistribution = useMemo(() => {
+    return selectedKommune && selectedYear ? getKommuneDistribution(selectedKommune, distributionKey, selectedYear) ?? [] : [];
+  }, [selectedKommune, distributionKey, selectedYear, getKommuneDistribution]);
 
   const chartData = useMemo(() => {
     if (!distribution) return []
-    return buildHistogram(distribution, bins, fylkeDistribution);
-  }, [distribution, bins, fylkeDistribution]);
+    return buildHistogram(distribution, bins, kommuneDistribution);
+  }, [distribution, bins, kommuneDistribution]);
 
   const kommuneData = yearData && selectedKommune ? yearData.byKommune[selectedKommune] : undefined;
   const kommuneCache = yearCache && selectedKommune ? yearCache.byKommune[selectedKommune] : undefined;
@@ -180,7 +165,7 @@ function DistributionChart({ distributionKey, bins = 25 }: Props) {
         },
         fylke: {
           visible: visibleStats.fylke.mean,
-          value: fylkeDistribution ? mean(fylkeDistribution) : undefined,
+          value: kommuneDistribution ? mean(kommuneDistribution) : undefined,
         },
       },
       median: {
@@ -190,11 +175,11 @@ function DistributionChart({ distributionKey, bins = 25 }: Props) {
         },
         fylke: {
           visible: visibleStats.fylke.median,
-          value: fylkeDistribution ? median(fylkeDistribution) : undefined,
+          value: kommuneDistribution ? median(kommuneDistribution) : undefined,
         },
       },
     } as ChartStatsData
-  ), [distribution, fylkeDistribution, visibleStats]);
+  ), [distribution, kommuneDistribution, visibleStats]);
 
   function toggleStatVisible(region: Region, stat: Stat) {
     setVisibleStats(prev => ({

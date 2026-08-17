@@ -28,11 +28,12 @@ def buildDataObject(excel_file_path: str, dm: dict, fylkeNr: str) -> dict:
             "byMetric": {},
         }
         for _, row in df.iterrows():
-            iKomNr = str(row["ssbid"]).zfill(4) # Ensure 4-digit kommune number
+            iKomNr = str(row["ssbid"])
 
             kommune_data_year_byKommune = {
-                "klimarisk_name": row["ssbid"],
+                "klimarisk_name": str(row["ssbid"]),
                 "klimarisk_indicator_number": {},
+                "klimarisk_kommune_nr": str(row["txtKomNr"]).zfill(4), # Ensure 4-digit kommune number
             }
             for determinant in dm["determinants"]:
                 for indicator in determinant["indicators"]:

@@ -38,7 +38,7 @@ function DetailedStats() {
     cache,
     selectedYear,
     selectedKommune,
-    getFylkeDistribution,
+    getKommuneDistribution,
   } = useDataStore();
   const { l } = useLanguageStore();
 
@@ -51,26 +51,26 @@ function DetailedStats() {
       name: dataModel.risk.name,
       description: dataModel.risk.description,
       rank: getDescendingRank(yearCache.byTotalRisk, yearCache.byKommune[selectedKommune].totalRisk),
-      rankFylke: getDescendingRank(getFylkeDistribution(selectedKommune, { type: "risk" }, selectedYear)!, yearCache.byKommune[selectedKommune].totalRisk),
+      rankFylke: getDescendingRank(getKommuneDistribution(selectedKommune, { type: "risk" }, selectedYear)!, yearCache.byKommune[selectedKommune].totalRisk),
       elements: dataModel.elements.filter(e => !e.disabled).map(e => ({
         name: e.name,
         description: e.description,
         key: e.key,
         ...(e.invert ? {invert: true} : {}),
         rank: getDescendingRank(yearCache.byElement[e.key], yearCache.byKommune[selectedKommune][e.key], e.invert),
-        rankFylke: getDescendingRank(getFylkeDistribution(selectedKommune, { type: "element", key: e.key }, selectedYear)!, yearCache.byKommune[selectedKommune][e.key], e.invert),
+        rankFylke: getDescendingRank(getKommuneDistribution(selectedKommune, { type: "element", key: e.key }, selectedYear)!, yearCache.byKommune[selectedKommune][e.key], e.invert),
         metrics: e.metrics.filter(m => !m.disabled).map(m => ({
           name: m.name,
           description: m.description,
           key: m.key,
           ...(!!m.invert !== !!e.invert ? {invert: true} : {}),
           rank: getDescendingRank(yearData.byMetric[m.key], yearData.byKommune[selectedKommune][m.key], !!m.invert !== !!e.invert),
-          rankFylke: getDescendingRank(getFylkeDistribution(selectedKommune, { type: "metric", key: m.key }, selectedYear)!, yearData.byKommune[selectedKommune][m.key], !!m.invert !== !!e.invert)
+          rankFylke: getDescendingRank(getKommuneDistribution(selectedKommune, { type: "metric", key: m.key }, selectedYear)!, yearData.byKommune[selectedKommune][m.key], !!m.invert !== !!e.invert)
         })),
       }))
     };
     return tmp
-  }, [yearData, yearCache, dataModel, selectedKommune, getFylkeDistribution, selectedYear]);
+  }, [yearData, yearCache, dataModel, selectedKommune, getKommuneDistribution, selectedYear]);
   
 
   if (!yearData || !yearCache || !dataModel) {

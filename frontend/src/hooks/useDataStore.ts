@@ -52,6 +52,7 @@ type KommuneData = {
   klimarisk_indicator_number: {
     [key: ElementKey]: number;
   };
+  klimarisk_kommune_nr: KommuneNr;
   [key: MetricKey]: number;
 }
 
@@ -140,7 +141,7 @@ interface DataStore {
   highlightedDistribution: DistributionKey | null;
   setHighlightedDistribution: (key: DistributionKey | null) => void;
 
-  getFylkeDistribution: (komNr: KommuneNr, distKey: DistributionKey, year: Year) => number[] | null;
+  getKommuneDistribution: (komNr: KommuneNr, distKey: DistributionKey, year: Year) => number[] | null;
 
   checkDistribution: () => void;
 
@@ -451,20 +452,37 @@ const useDataStore = create<DataStore>((set, get) => ({
 
   setHighlightedDistribution: (key) => set({ highlightedDistribution: key }),
 
-  getFylkeDistribution(komNr, distKey, year) {
+  getKommuneDistribution(komNr, distKey, year) {
     const { data, cache } = get()
 
     if (!data || !cache || !year) return null;
 
-    const fylkeNr = komNr.slice(0, 2);
+    const yearData = data.years[year];
+    const yearCache = cache.years[year];
+    const selectedKommune = komNr;
+    const distributionKey = distKey;
 
-    if (distKey.type === "risk") {
-      return Object.entries(cache.years[year].byKommune).filter(([k]) => k.startsWith(fylkeNr)).map(([,k]) => (k as KommuneCache).totalRisk).sort((a, b) => a - b);
-    } else if (distKey.type === "element") {
-      return Object.entries(cache.years[year].byKommune).filter(([k]) => k.startsWith(fylkeNr)).map(([,k]) => (k as KommuneCache)[distKey.key]).sort((a, b) => a - b);
-    } else {
-      return Object.entries(data.years[year].byKommune).filter(([k]) => k.startsWith(fylkeNr)).map(([,k]) => (k as KommuneData)[distKey.key]).sort((a, b) => a - b);
-    }
+    if (!yearData || !yearCache) return []
+    const byKommune = 
+      distributionKey.type === "risk"
+        ? yearCache?.byKommune
+        : distributionKey.type === "element"
+          ? yearCache?.byKommune
+          : yearData?.byKommune;
+    
+    const selectedGridKommuneNr = yearData.byKommune[selectedKommune as KommuneNr]?.klimarisk_kommune_nr;
+    const fylkeValues = byKommune && selectedKommune ? Object.keys(byKommune).filter(k => yearData.byKommune[k as KommuneNr]?.klimarisk_kommune_nr === selectedGridKommuneNr).map(k => {
+      const kommuneData = yearData.byKommune[k as KommuneNr];
+      const kommuneCache = yearCache.byKommune[k as KommuneNr];
+      return distributionKey.type === "risk"
+        ? kommuneCache.totalRisk
+        : distributionKey.type === "element"
+          ? kommuneCache[distributionKey.key]
+          : distributionKey.key in kommuneData
+            ? kommuneData[distributionKey.key]
+            : undefined;
+    }) : [];
+    return fylkeValues.filter(v => v !== undefined).sort((a, b) => a - b)
   },
 
   checkDistribution() {
