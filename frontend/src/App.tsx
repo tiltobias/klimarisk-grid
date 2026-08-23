@@ -9,8 +9,6 @@ function App() {
 
   const {
     fetchDataModel,
-    fetchData,
-    selectedFylke,
   } = useDataStore();
 
   const { l, language } = useLanguageStore();
@@ -19,12 +17,6 @@ function App() {
   useEffect(() => {
     fetchDataModel();
   }, [fetchDataModel]);
-
-  useEffect(() => {
-    if (selectedFylke) {
-      fetchData(selectedFylke);
-    }
-  }, [fetchData, fetchDataModel, selectedFylke]);
 
   useEffect(() => {
     document.title = l(t.header.title) ?? "Klimarisk";

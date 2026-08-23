@@ -149,7 +149,7 @@ interface DataStore {
   getRiskColors: (distKey?: DistributionKey) => string[];
 
   selectedFylke: FylkeNr | null;
-  setSelectedFylke: (fylke: FylkeNr | null) => void;
+  setSelectedFylke: (fylke: FylkeNr) => void;
 }
 
 const useDataStore = create<DataStore>((set, get) => ({
@@ -527,7 +527,18 @@ const useDataStore = create<DataStore>((set, get) => ({
 
   selectedFylke: null,
 
-  setSelectedFylke: (fylke) => set({ selectedFylke: fylke }),
+  setSelectedFylke: (fylke) => {
+    const {
+      fetchData,
+      setSelectedKommune,
+      setHighlightedKommune,
+    } = get();
+    fetchData(fylke);
+    setSelectedKommune(null);
+    setHighlightedKommune(null);
+    
+    set({ selectedFylke: fylke })
+  },
 
 }));
 
