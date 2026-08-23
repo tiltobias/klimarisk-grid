@@ -179,20 +179,21 @@ def cleanGeoJson(data: dict) -> dict:
         } for feature in features],
     }
 
+# Path definitions
+root_folder = Path(__file__).resolve().parent.parent
+
+in_path_excel = root_folder / "scripts" / "source_data.xlsx"
+in_path_geojson = root_folder / "scripts" / "source_geometry.geojson"
+in_path_model = root_folder / "scripts" / "source_data_model.json"
+
+out_folder = root_folder / "frontend" / "public" / "data"
+out_path_data = lambda fylkeNr: out_folder / f"data_fylke{fylkeNr}.json"
+out_path_cache = lambda fylkeNr: out_folder / f"cache_fylke{fylkeNr}.json"
+out_path_model = out_folder / "data_model.json"
+out_path_geojson = out_folder / "geometry.geojson"
+
 
 if __name__ == "__main__":
-    root_folder = Path(__file__).resolve().parent.parent
-
-    in_path_excel = root_folder / "scripts" / "source_data.xlsx"
-    in_path_geojson = root_folder / "scripts" / "source_geometry.geojson"
-    in_path_model = root_folder / "scripts" / "source_data_model.json"
-
-    out_folder = root_folder / "frontend" / "public" / "data"
-    out_path_data = lambda fylkeNr: out_folder / f"data_fylke{fylkeNr}.json"
-    out_path_cache = lambda fylkeNr: out_folder / f"cache_fylke{fylkeNr}.json"
-    out_path_model = out_folder / "data_model.json"
-    out_path_geojson = out_folder / "geometry.geojson"
-
     # Load source files
     dm = json.load(open(in_path_model, "r", encoding="utf-8"))
     geojson = json.load(open(in_path_geojson, "r", encoding="utf-8"))
