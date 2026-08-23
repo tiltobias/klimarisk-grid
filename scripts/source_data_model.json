@@ -15,8 +15,8 @@
       "no": "Total Risiko"
     },
     "description": {
-      "no": "Om en rutenettcelle er i en kommune der minimum 10 celler har verdi på Respons beregnes klimarisiko som: Fare * 0.4 + Eksponering * 0.3 + Sarbarhet + (100 - Respons) * 0.1. Om ingen eller færre enn 10 rutenettcelle dekker sikringstiltak beregnes klimarisiko som: Fare * 0.5 + Eksponering * 0.4 + Sarbarhet * 0.3. Mørk farge betyr høy klimarisiko, lys farge betyr lav klimarisiko.",
-      "en": "If a grid cell is located in a municipality where at least 10 cells have a value for Response, climate risk is calculated as: Hazard * 0.4 + Exposure * 0.3 + Vulnerability + (100 - Response) * 0.1. If no grid cells or fewer than 10 grid cells contain protective measures, climate risk is calculated as: Hazard * 0.5 + Exposure * 0.4 + Vulnerability * 0.3. Darker colors indicate higher climate risk, while lighter colors indicate lower climate risk."
+      "no": "Om en rutenettcelle er i en kommune der minimum 10 celler har verdi på Respons beregnes klimarisiko som: Fare * 0.4 + Eksponering * 0.3 + Sarbarhet * 0.2 + (100 - Respons) * 0.1. Om ingen eller færre enn 10 rutenettcelle dekker sikringstiltak beregnes klimarisiko som: Fare * 0.5 + Eksponering * 0.3 + Sarbarhet * 0.2. Mørk farge betyr høy klimarisiko, lys farge betyr lav klimarisiko.",
+      "en": "If a grid cell is located in a municipality where at least 10 cells have a value for Response, climate risk is calculated as: Hazard * 0.4 + Exposure * 0.3 + Vulnerability * 0.2 + (100 - Response) * 0.1. If no grid cells or fewer than 10 grid cells contain protective measures, climate risk is calculated as: Hazard * 0.5 + Exposure * 0.3 + Vulnerability * 0.2. Darker colors indicate higher climate risk, while lighter colors indicate lower climate risk."
     }
   },
   "determinants": [
