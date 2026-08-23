@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import useDataStore from './hooks/useDataStore'
 import Dashboard from './pages/Dashboard';
 // import ReportPage from './pages/ReportPage';
+import useLanguageStore, { t } from './hooks/useLanguageStore';
 
 function App() {
 
@@ -11,6 +12,8 @@ function App() {
     fetchData,
     selectedFylke,
   } = useDataStore();
+
+  const { l, language } = useLanguageStore();
 
   // Fetch data on mount, only once
   useEffect(() => {
@@ -22,6 +25,10 @@ function App() {
       fetchData(selectedFylke);
     }
   }, [fetchData, fetchDataModel, selectedFylke]);
+
+  useEffect(() => {
+    document.title = l(t.header.title) ?? "Klimarisk";
+  }, [l, language]);
 
 
   return (

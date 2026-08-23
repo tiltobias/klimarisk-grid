@@ -6,6 +6,10 @@ const text = {
     },
   },
   header: {
+    title: {
+      en: "Klimarisk Grid",
+      no: "Klimarisk Veg",
+    },
     layout: {
       l1: {
         en: "County overview",

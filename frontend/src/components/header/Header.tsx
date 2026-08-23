@@ -4,6 +4,7 @@ import LayoutSelect from './LayoutSelect';
 import LanguageSelect from './LanguageSelect';
 import FylkeSelector from './FylkeSelector';
 // import ReportButton from './ReportButton';
+import useLanguageStore, { t } from '../../hooks/useLanguageStore';
 
 
 interface Props {
@@ -12,12 +13,13 @@ interface Props {
 
 
 function Header({ noControls }: Props) {
+  const { l } = useLanguageStore();
 
   return (
     <header>
       <h1>
         <a href="https://github.com/tiltobias/klimarisk-grid" target="_blank" rel="noopener noreferrer">
-          Klimarisk Grid
+          {l(t.header.title)}
         </a>
       </h1>
       {!noControls && (
