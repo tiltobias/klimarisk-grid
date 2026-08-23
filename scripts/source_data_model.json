@@ -166,7 +166,7 @@
           },
           "description": {
             "no": "Lengde av kjegler som settes opp i rader for å bremse snøskred og for å redusere utløpsdistansen. Kun data for Møre og Romsdal, Nordland, Troms, Vestland.",
-            "en": "Length of mounds arranged in rows to slow snow avalanches and reduce their runout distance."
+            "en": "Length of mounds arranged in rows to slow snow avalanches and reduce their runout distance. Data are only available for Møre og Romsdal, Nordland, Troms and Vestland."
           },
           "url": "https://datakatalogen.atlas.vegvesen.no/#/846/Bremsekjegler,%20sn%C3%B8skred"
         },
@@ -202,7 +202,7 @@
           },
           "description": {
             "no": "Lengde av magasin for å fange opp skredmasser eller nedfall fra bergskjæringer. Ikke data for Akershus, Innlandet, Oslo, Vestfold, Østfold.",
-            "en": "Length of catchment structures designed to collect landslide debris or material falling from rock cuttings."
+            "en": "Length of catchment structures designed to collect landslide debris or material falling from rock cuttings. No data are available for Akershus, Innlandet, Oslo, Vestfold or Østfold."
           },
           "url": "https://datakatalogen.atlas.vegvesen.no/#/625/Skredmagasin-Fanggr%C3%B8ft"
         },
@@ -214,7 +214,7 @@
           },
           "description": {
             "no": "Lengde av konstruksjon som omslutter vegen for å beskytte den mot skred. Tak og vegg inn mot skråning er massive. Vegg ut fra skråning er åpen eller ev. tettet med lettere materiale. Ikke data for Akershus, Buskerud, Oslo, Rogaland, Trøndelag, Vestfold, Østfold.",
-            "en": "Length of structures enclosing the road to protect it from avalanches or landslides. The roof and wall facing the slope are solid, while the outer wall is open or may be closed using lighter materials."
+            "en": "Length of structures enclosing the road to protect it from avalanches or landslides. The roof and wall facing the slope are solid, while the outer wall is open or may be closed using lighter materials. No data are available for Akershus, Buskerud, Oslo, Rogaland, Trøndelag, Vestfold or Østfold."
           },
           "url": "https://datakatalogen.atlas.vegvesen.no/#/66/Skredoverbygg"
         },
@@ -226,7 +226,7 @@
           },
           "description": {
             "no": "Lengde av installasjon for å sikre skredutsatt terreng. Kun data for Finnmark, Innlandet, Troms, Vestland.",
-            "en": "Length of installations used to secure avalanche- or landslide-prone terrain."
+            "en": "Length of installations used to secure avalanche- or landslide-prone terrain. Data are only available for Finnmark, Innlandet, Troms and Vestland."
           },
           "url": "https://datakatalogen.atlas.vegvesen.no/#/851/Skredutl%C3%B8sningstiltak"
         },
@@ -238,7 +238,7 @@
           },
           "description": {
             "no": "Lengde av område som blir overvåket av et skredvarslingssystem. Kun data for Innlandet, Møre og Romsdal, Nordland, Telemark, Troms, Trøndelag, Vestland.",
-            "en": "Length of area monitored by a landslide or avalanche warning system."
+            "en": "Length of area monitored by a landslide or avalanche warning system. Data are only available for Innlandet, Møre og Romsdal, Nordland, Telemark, Troms, Trøndelag and Vestland."
           },
           "url": "https://datakatalogen.atlas.vegvesen.no/#/849/Skred,%20varsling-overv%C3%A5kning"
         },
@@ -250,7 +250,7 @@
           },
           "description": {
             "no": "Lengde av skjerm som settes opp for å stoppe drivende snø. Ikke data for Akershus, Oslo, Vestfold, Østfold.",
-            "en": "Length of fencing installed to stop drifting snow."
+            "en": "Length of fencing installed to stop drifting snow. No data are available for Akershus, Oslo, Vestfold or Østfold."
           },
           "url": "https://datakatalogen.atlas.vegvesen.no/#/848/Sn%C3%B8skjerm"
         },
@@ -262,7 +262,7 @@
           },
           "description": {
             "no": "Lengde av konstruksjon i fjellsiden som holder snø på plass så snøskred ikke løsner. Kun data for Agder, Finnmark, Innlandet, Troms, Trøndelag, Vestland.",
-            "en": "Length of structures installed on a mountainside to hold snow in place and prevent snow avalanches from releasing."
+            "en": "Length of structures installed on a mountainside to hold snow in place and prevent snow avalanches from releasing. Data are only available for Agder, Finnmark, Innlandet, Troms, Trøndelag and Vestland."
           },
           "url": "https://datakatalogen.atlas.vegvesen.no/#/850/St%C3%B8tteforbygning,%20sn%C3%B8"
         },
@@ -286,7 +286,7 @@
           },
           "description": {
             "no": "Antall enkeltkomponent i et skredvarslingsanlegg eller i et skredutløsningstiltak. Kun data for Finnmark, Innlandet, Møre og Romsdal, Nordland, Telemark, Troms, Vestland.",
-            "en": "Number of individual components in a landslide warning system or avalanche release measure."
+            "en": "Number of individual components in a landslide warning system or avalanche release measure. Data are only available for Finnmark, Innlandet, Møre og Romsdal, Nordland, Telemark, Troms and Vestland."
           },
           "url": "https://datakatalogen.atlas.vegvesen.no/#/932/Skredteknisk%20objekt"
         }
