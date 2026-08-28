@@ -20,6 +20,7 @@ function App() {
 
   useEffect(() => {
     document.title = l(t.header.title) ?? "Klimarisk";
+    document.documentElement.lang = language === "no" ? "nb" : "en";
   }, [l, language]);
 
 
