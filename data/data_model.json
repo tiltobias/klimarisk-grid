@@ -17,8 +17,8 @@
         "no": "Fare"
       },
       "description": {
-        "no": "Gjennomsnittet av tre fareindikatorer, normalisert til en skala fra 0 til 100. Mørk farge betyr høy fare, lys farge betyr lav fare.",
-        "en": "The mean of three hazard indicators, normalized to a scale from 0 to 100. Darker colors indicate higher hazard, while lighter colors indicate lower hazard."
+        "no": "Gjennomsnittet av tre fareindikatorer, normalisert til en skala fra 0 til 100. Mørk farge betyr høy fare, lys farge betyr lav fare. Data for tidsperiode 2050.",
+        "en": "The mean of three hazard indicators, normalized to a scale from 0 to 100. Darker colors indicate higher hazard, while lighter colors indicate lower hazard. Data for time period 2050."
       },
       "metrics": [
         {
@@ -63,8 +63,8 @@
         "no": "Eksponering"
       },
       "description": {
-        "no": "For kystkommuner: Summen av de tre eksponeringsindikatorene uten vekting. For innlandskommuner: summen av erosjon pga overvann og skredeksponering uten vekting.",
-        "en": "For coastal municipalities: the unweighted sum of the three exposure indicators. For inland municipalities: the unweighted sum of erosion due to surface runoff and landslide exposure."
+        "no": "For kystkommuner: Summen av de tre eksponeringsindikatorene uten vekting. For innlandskommuner: summen av erosjon pga overvann og skredeksponering uten vekting. Mørk farge betyr høy eksponering, lys farge betyr lav eksponering.",
+        "en": "For coastal municipalities: the unweighted sum of the three exposure indicators. For inland municipalities: the unweighted sum of erosion due to surface runoff and landslide exposure. Darker colors indicate higher exposure, while lighter colors indicate lower exposure."
       },
       "metrics": [
         {
@@ -85,8 +85,8 @@
             "en": "Erosion due to surface runoff"
           },
           "description": {
-            "no": "Antall kritiske punkt per rutenett. Et kritisk punkt er der en dreneringslinje krysser en veg, men der det ikke er kulvert eller stikkrenne.",
-            "en": "Number of critical points per grid cell. A critical point is where a drainage line crosses a road without a culvert or drainage pipe."
+            "no": "Antall kritiske punkt per rutenett. Et kritisk punkt er der en dreneringslinje krysser en veg, men der det ikke er kulvert eller stikkrenne. Data for tidsperiode 2025 brukes for 2050.",
+            "en": "Number of critical points per grid cell. A critical point is where a drainage line crosses a road without a culvert or drainage pipe. Data for time period 2025 is used for 2050."
           }
         },
         {
@@ -96,8 +96,8 @@
             "en": "Landslide exposure"
           },
           "description": {
-            "no": "Veglengde som krysser faresone for kvikkleireskredfare, fjellskredfare og skredfare. Bruker alle returintervaller og faregrader med vekting slik at faresoner med høyest faregrad / kortest returintervall har høyest vekt.",
-            "en": "Road length intersecting hazard zones for quick-clay landslides, rock avalanches and landslides. All return periods and hazard levels are included, with weighting so that zones with the highest hazard level or shortest return period receive the highest weight."
+            "no": "Veglengde som krysser faresone for kvikkleireskredfare, fjellskredfare og skredfare. Bruker alle returintervaller og faregrader med vekting slik at faresoner med høyest faregrad / kortest returintervall har høyest vekt. Data for tidsperiode 2025 brukes for 2050.",
+            "en": "Road length intersecting hazard zones for quick-clay landslides, rock avalanches and landslides. All return periods and hazard levels are included, with weighting so that zones with the highest hazard level or shortest return period receive the highest weight. Data for time period 2025 is used for 2050."
           }
         }
       ]
@@ -109,8 +109,8 @@
         "no": "Sårbarhet"
       },
       "description": {
-        "no": "Gjennomsnittet av to sårbarhetsindikatorer, normalisert til en skala fra 0 til 100. Mørk farge betyr høy sårbarhet, lys farge betyr lav sårbarhet.",
-        "en": "The mean of two vulnerability indicators, normalized to a scale from 0 to 100. Darker colors indicate higher vulnerability, while lighter colors indicate lower vulnerability."
+        "no": "Gjennomsnittet av to sårbarhetsindikatorer, normalisert til en skala fra 0 til 100. Mørk farge betyr høy sårbarhet, lys farge betyr lav sårbarhet. Data for tidperioden 2025 brukes for 2050.",
+        "en": "The mean of two vulnerability indicators, normalized to a scale from 0 to 100. Darker colors indicate higher vulnerability, while lighter colors indicate lower vulnerability. Data for time period 2025 is used for 2050."
       },
       "metrics": [
         {
@@ -144,8 +144,8 @@
         "no": "Respons"
       },
       "description": {
-        "no": "Indeks for gjennomførte sikringstiltak innenfor rutenettcellen som uvektet sum av responsindikatorer.",
-        "en": "Index of implemented protective measures within the grid cell, calculated as the unweighted sum of the response indicators."
+        "no": "Indeks for gjennomførte sikringstiltak innenfor rutenettcellen som uvektet sum av responsindikatorer. Mørk farge betyr lav respons, lys farge betyr høy respons. Data for tidsperiode 2025 brukes for 2050.",
+        "en": "Index of implemented protective measures within the grid cell, calculated as the unweighted sum of the response indicators. Darker colors indicate lower response, while lighter colors indicate higher response. Data for time period 2025 is used for 2050."
       },
       "metrics": [
         {
