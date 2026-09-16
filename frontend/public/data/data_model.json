@@ -147,6 +147,7 @@
         "no": "Indeks for gjennomførte sikringstiltak innenfor rutenettcellen som uvektet sum av responsindikatorer. Mørk farge betyr lav respons, lys farge betyr høy respons. Indikatorene viser oppdaterte nåtids-data.",
         "en": "Index of implemented protective measures within the grid cell, calculated as the unweighted sum of the response indicators. Darker colors indicate lower response, while lighter colors indicate higher response. The indicators show updated current data."
       },
+      "invert": true,
       "metrics": [
         {
           "key": "rBremsekjeglersnoskred",
