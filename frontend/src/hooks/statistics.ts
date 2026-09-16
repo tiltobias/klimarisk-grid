@@ -32,9 +32,11 @@ export function percentile(sorted: number[], value: number): number {
 *
 * @param arr Sorted ascending numeric array
 * @param value Value to find and rank
-* @returns Number of stricktly worse items in arr
+* @returns Number of stricktly worse items in arr, or null if value is 0
 */
-export function getDescendingRank(arr: number[], value: number, invert?: boolean): number {
+export function getDescendingRank(arr: number[], value: number, invert?: boolean): number | null {
+
+  if (value === 0) return null;
 
   let left = 0;
   let right = arr.length;

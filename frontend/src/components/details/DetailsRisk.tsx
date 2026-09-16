@@ -77,10 +77,10 @@ function DetailsRisk({ r }: Props) {
           </Tooltip>
         </div>
         <div className="detailsRank">
-          {r.rank}
+          {r.rank ?? "–"}
         </div>
         <div className="detailsRankFylke">
-          {r.rankFylke}
+          {r.rankFylke ?? "–"}
         </div>
       </button>
       <ul>

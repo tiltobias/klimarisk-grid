@@ -63,10 +63,10 @@ function DetailsElement({ e }: Props) {
           </Tooltip>
         </div>
         <div className="detailsRank">
-          {e.rank}
+          {e.rank ?? "–"}
         </div>
         <div className="detailsRankFylke">
-          {e.rankFylke}
+          {e.rankFylke ?? "–"}
         </div>
       </button>
       <ul>

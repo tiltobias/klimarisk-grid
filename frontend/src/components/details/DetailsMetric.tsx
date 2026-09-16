@@ -54,10 +54,10 @@ function DetailsMetric({ m }: Props) {
           </Tooltip>
         </div>
         <div className="detailsRank">
-          {m.rank}
+          {m.rank ?? "–"}
         </div>
         <div className="detailsRankFylke">
-          {m.rankFylke}
+          {m.rankFylke ?? "–"}
         </div>
       </button>
     </li>

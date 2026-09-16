@@ -5,28 +5,30 @@ import "./DetailedStats.css";
 import DetailsRisk from "./DetailsRisk";
 import useLanguageStore, { t, type Language } from "../../hooks/useLanguageStore";
 
+type RankValue = number | null;
+
 export type RankMetric = {
   name: Record<Language, string>;
   description?: Record<Language, string>;
   key: MetricKey;
   invert?: boolean;
-  rank: number;
-  rankFylke: number;
+  rank: RankValue;
+  rankFylke: RankValue;
 }
 export type RankElement = {
   name: Record<Language, string>;
   description?: Record<Language, string>;
   key: ElementKey;
   invert?: boolean;
-  rank: number;
-  rankFylke: number;
+  rank: RankValue;
+  rankFylke: RankValue;
   metrics: RankMetric[];
 }
 export type RankRisk = {
   name: Record<Language, string>;
   description?: Record<Language, string>;
-  rank: number;
-  rankFylke: number;
+  rank: RankValue;
+  rankFylke: RankValue;
   elements: RankElement[];
 }
 

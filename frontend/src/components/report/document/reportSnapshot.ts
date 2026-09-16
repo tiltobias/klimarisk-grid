@@ -2,11 +2,13 @@ import type { KommuneNr, Year, ElementKey, MetricKey } from "../../../hooks/useD
 
 import { type Language, t } from "../../../hooks/useLanguageStore";
 
+type RankValue = number | null;
+
 type StatValues = {
   color: string;
   value?: number;
-  rank: number;
-  rankFylke: number;
+  rank: RankValue;
+  rankFylke: RankValue;
 }
 
 type Metric = {
