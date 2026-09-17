@@ -36,6 +36,8 @@ export function percentile(sorted: number[], value: number): number {
 */
 export function getDescendingRank(arr: number[], value: number, invert?: boolean): number | null {
 
+  if (!arr || arr.length === 0 || value === undefined) return null;
+
   let left = 0;
   let right = arr.length;
 

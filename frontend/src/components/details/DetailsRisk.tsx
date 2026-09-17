@@ -84,7 +84,7 @@ function DetailsRisk({ r }: Props) {
         </div>
       </button>
       <ul>
-        {sortedElements.map((e, eIndex) => (
+        {sortedElements.map((e, eIndex) => kommuneCache && kommuneCache[e.key] !== undefined && (
           <DetailsElement key={eIndex} e={e} />
         ))}
       </ul>

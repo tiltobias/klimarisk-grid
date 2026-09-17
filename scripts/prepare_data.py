@@ -36,6 +36,11 @@ def buildDataObject(excel_file_path: str, dm: dict, fylkeNr: str) -> dict:
                 "klimarisk_kommune_nr": str(row["txtKomNr"]).zfill(4), # Ensure 4-digit kommune number
             }
             for determinant in dm["determinants"]:
+                
+                # Unnormalized response 0 are not used for the risk
+                if determinant["key"][0] == "R" and row["Respons_2050"] == 0:
+                    continue
+
                 for indicator in determinant["indicators"]:
                     indicator_value = row[getIndicatorColumn(indicator["key"], year["key"])]
                     if pd.isna(indicator_value):
@@ -82,6 +87,11 @@ def buildCacheObject(excel_file_path: str, dm: dict, fylkeNr: str) -> dict:
             }
             cache_data_year["byTotalRisk"].append(totalRisk)
             for determinant in dm["determinants"]:
+
+                # Unnormalized response 0 are not used for the risk
+                if determinant["key"][0] == "R" and row["Respons_2050"] == 0:
+                    continue
+
                 determinant_value = row[getIndicatorColumn(determinant["key"], year["key"])]
                 cache_data_year_byKommune[determinant["key"]] = determinant_value
 

@@ -86,8 +86,8 @@ function RiskTable() {
       const bValue: string | number = b && sortKey in b ? (b[sortKey] as string | number) ?? '' : '';
 
       if (aValue === bValue) return 0;
-      if (aValue === undefined) return 1;
-      if (bValue === undefined) return -1;
+      if (aValue === '') return 1;
+      if (bValue === '') return -1;
       if (aValue < bValue) return sortAscending ? -1 : 1;
       if (aValue > bValue) return sortAscending ? 1 : -1;
       return 0;
